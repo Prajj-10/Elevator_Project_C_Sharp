@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cdVNxwbQ6AlyIjuz+NcVPi7cm+dsFPAXPudZDvNwrGH6p69eKgSSCXF1EkRtvAzfj4zGSEV+RwXEZ3UR/5tZnQ==",
+  "dgSpecHash": "TERf1dXEEAtv1L1eO1hnVueSM0kIOgAYjMAnE3Z7iTEZtEKI3yhhKcLjNtXe4qx2MxfS7o2OgiPcl8hNl/95aA==",
   "success": true,
   "projectFilePath": "C:\\Users\\prajj\\source\\repo 2\\MovingImage\\MovingImage\\MovingImage.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\prajj\\.nuget\\packages\\system.speech\\6.0.0\\system.speech.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

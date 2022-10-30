@@ -1,15 +1,25 @@
 using System.Diagnostics.Metrics;
 using System.Timers;
+using System;
+using System.Speech.Synthesis;
+
+
 
 namespace MovingImage
 {
     public partial class Form1 : Form
     {
         
+        
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
+        SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+        
+        
+        
         public Form1()
         {
             InitializeComponent();
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
 
         }
 
@@ -22,6 +32,8 @@ namespace MovingImage
 
         private void UpButtonClick(object sender, EventArgs e)
         {
+            
+            synthesizer.Speak("Going Up.");
             buttonUp.BackColor = Color.Firebrick;
             if(Ground_Floor_Door.Size.Width == 0) 
             {
@@ -57,7 +69,7 @@ namespace MovingImage
 
         private void DownButtonClick(object sender, EventArgs e)
         {
-            
+            synthesizer.Speak("Going Down.");
             buttonDown.BackColor = Color.Firebrick;
             
             if(First_Floor_Door.Size.Width == 0)
@@ -84,6 +96,7 @@ namespace MovingImage
 
         private void OpenButtonClick(object sender, EventArgs e)
         {
+            synthesizer.Speak("Opening Door.");
             buttonOpen.BackColor = Color.Firebrick;
             TimerOpen.Enabled = true;
 
@@ -114,8 +127,10 @@ namespace MovingImage
 
         private void CloseButtonClick(object sender, EventArgs e)
         {
+            synthesizer.Speak("Closing Door.");
             buttonClose.BackColor = Color.Firebrick;
             TimerClose.Enabled = true;
+           
            /* for (int i = 1; i < 10; i++)
             {
                 newX = Left_Door.Location.X + dX;
@@ -138,7 +153,11 @@ namespace MovingImage
                 TimerUp.Enabled = false;
                 TimerOpen.Enabled = true;
                 buttonUp.BackColor = Color.Gray;
+                Thread.Sleep(200);
+
+                synthesizer.Speak("You have reached First Floor.");
             }
+            
 
         }
 
@@ -152,7 +171,9 @@ namespace MovingImage
             {
                TimerDown.Enabled = false;
                TimerOpen.Enabled = true;
-               buttonDown.BackColor = Color.Gray; 
+               buttonDown.BackColor = Color.Gray;
+                Thread.Sleep(200);
+               synthesizer.Speak("You have reached Ground Floor.");
             }
 
         }
@@ -169,6 +190,7 @@ namespace MovingImage
                 {
                     TimerOpen.Enabled = false;
                     buttonOpen.BackColor = Color.Gray;
+                   
                 }
             }
             if(Lift_Interior.Location.Y == 96)
@@ -193,6 +215,7 @@ namespace MovingImage
                 {
                     TimerClose.Enabled = false;
                     buttonClose.BackColor = Color.Gray;
+
 
                 }
             }
@@ -221,6 +244,12 @@ namespace MovingImage
                     Timer_Close_First_Floor.Enabled = false;
                     TimerDown.Enabled = true;
                     buttonDown.BackColor = Color.Gray;
+                    
+                   
+                }
+                if (Lift_Interior.Location.Y == 696)
+                {
+                    synthesizer.Speak("You have reached Ground Floor.");
                 }
             }
         }
@@ -236,6 +265,7 @@ namespace MovingImage
                     Timer_Close_Ground_Floor.Enabled = false;
                     TimerUp.Enabled = true;
                     buttonUp.BackColor = Color.Gray;
+                    synthesizer.Speak("You have reached First Floor.");
                 }
             }
         }
