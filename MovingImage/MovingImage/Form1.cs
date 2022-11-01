@@ -106,11 +106,19 @@ namespace MovingImage
 
         private void OpenButtonClick(object sender, EventArgs e)
         {
-            buttonOpen.BackColor = Color.Firebrick;
-            synthesizer.Speak("Opening Door.");
-            open.Play();
+            if(First_Floor_Door.Size.Width == 0 || Ground_Floor_Door.Size.Width == 0)
+            {
+                synthesizer.Speak("Door is already open ! ");
+            }
+            else 
+            {
+                buttonOpen.BackColor = Color.Firebrick;
+                synthesizer.Speak("Opening Door.");
+                open.Play();
+
+                TimerOpen.Enabled = true;
+            }
             
-            TimerOpen.Enabled = true;
 
            /* for (int i = 1; i < 10; i++)
             {
@@ -139,11 +147,19 @@ namespace MovingImage
 
         private void CloseButtonClick(object sender, EventArgs e)
         {
-            buttonClose.BackColor = Color.Firebrick;
-            synthesizer.Speak("Closing Door.");
-            close.Play();
+            if(First_Floor_Door.Size.Width == 210 || Ground_Floor_Door.Size.Width == 210)
+            {
+                synthesizer.Speak("Door is already closed !!");
+            }
+            else
+            {
+                buttonClose.BackColor = Color.Firebrick;
+                synthesizer.Speak("Closing Door.");
+                close.Play();
+
+                TimerClose.Enabled = true;
+            }
             
-            TimerClose.Enabled = true;
            
            /* for (int i = 1; i < 10; i++)
             {

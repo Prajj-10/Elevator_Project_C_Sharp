@@ -59,7 +59,6 @@
             this.Lift_Interior.BackColor = System.Drawing.Color.Transparent;
             this.Lift_Interior.Image = ((System.Drawing.Image)(resources.GetObject("Lift_Interior.Image")));
             this.Lift_Interior.Location = new System.Drawing.Point(204, 696);
-            this.Lift_Interior.Margin = new System.Windows.Forms.Padding(4);
             this.Lift_Interior.Name = "Lift_Interior";
             this.Lift_Interior.Size = new System.Drawing.Size(208, 369);
             this.Lift_Interior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -86,9 +85,10 @@
             // 
             this.buttonUp.BackColor = System.Drawing.Color.Gray;
             this.buttonUp.Image = ((System.Drawing.Image)(resources.GetObject("buttonUp.Image")));
-            this.buttonUp.Location = new System.Drawing.Point(777, 212);
+            this.buttonUp.Location = new System.Drawing.Point(622, 170);
+            this.buttonUp.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUp.Name = "buttonUp";
-            this.buttonUp.Size = new System.Drawing.Size(145, 141);
+            this.buttonUp.Size = new System.Drawing.Size(116, 113);
             this.buttonUp.TabIndex = 1;
             this.buttonUp.UseVisualStyleBackColor = false;
             this.buttonUp.Click += new System.EventHandler(this.UpButtonClick);
@@ -97,9 +97,10 @@
             // 
             this.buttonDown.BackColor = System.Drawing.Color.Gray;
             this.buttonDown.Image = ((System.Drawing.Image)(resources.GetObject("buttonDown.Image")));
-            this.buttonDown.Location = new System.Drawing.Point(777, 370);
+            this.buttonDown.Location = new System.Drawing.Point(622, 296);
+            this.buttonDown.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDown.Name = "buttonDown";
-            this.buttonDown.Size = new System.Drawing.Size(145, 144);
+            this.buttonDown.Size = new System.Drawing.Size(116, 115);
             this.buttonDown.TabIndex = 2;
             this.buttonDown.UseVisualStyleBackColor = false;
             this.buttonDown.Click += new System.EventHandler(this.DownButtonClick);
@@ -108,9 +109,10 @@
             // 
             this.buttonOpen.BackColor = System.Drawing.Color.Gray;
             this.buttonOpen.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpen.Image")));
-            this.buttonOpen.Location = new System.Drawing.Point(685, 577);
+            this.buttonOpen.Location = new System.Drawing.Point(548, 462);
+            this.buttonOpen.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(155, 133);
+            this.buttonOpen.Size = new System.Drawing.Size(124, 106);
             this.buttonOpen.TabIndex = 3;
             this.buttonOpen.UseVisualStyleBackColor = false;
             this.buttonOpen.Click += new System.EventHandler(this.OpenButtonClick);
@@ -119,9 +121,10 @@
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Gray;
             this.buttonClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonClose.Image")));
-            this.buttonClose.Location = new System.Drawing.Point(869, 577);
+            this.buttonClose.Location = new System.Drawing.Point(695, 462);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(151, 133);
+            this.buttonClose.Size = new System.Drawing.Size(121, 106);
             this.buttonClose.TabIndex = 4;
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.CloseButtonClick);
@@ -130,7 +133,8 @@
             // 
             this.Ground_Floor_Door.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Ground_Floor_Door.Image = ((System.Drawing.Image)(resources.GetObject("Ground_Floor_Door.Image")));
-            this.Ground_Floor_Door.Location = new System.Drawing.Point(204, 696);
+            this.Ground_Floor_Door.Location = new System.Drawing.Point(204, 690);
+            this.Ground_Floor_Door.Margin = new System.Windows.Forms.Padding(2);
             this.Ground_Floor_Door.Name = "Ground_Floor_Door";
             this.Ground_Floor_Door.Size = new System.Drawing.Size(208, 375);
             this.Ground_Floor_Door.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -141,6 +145,7 @@
             // 
             this.First_Floor_Door.Image = ((System.Drawing.Image)(resources.GetObject("First_Floor_Door.Image")));
             this.First_Floor_Door.Location = new System.Drawing.Point(204, 96);
+            this.First_Floor_Door.Margin = new System.Windows.Forms.Padding(2);
             this.First_Floor_Door.Name = "First_Floor_Door";
             this.First_Floor_Door.Size = new System.Drawing.Size(208, 375);
             this.First_Floor_Door.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -161,6 +166,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(150, 643);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(306, 457);
             this.pictureBox1.TabIndex = 8;
@@ -171,6 +177,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(150, 44);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(292, 452);
             this.pictureBox2.TabIndex = 9;
@@ -180,18 +187,19 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Gray;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(661, 152);
+            this.pictureBox3.Location = new System.Drawing.Point(529, 122);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(393, 619);
+            this.pictureBox3.Size = new System.Drawing.Size(314, 495);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 1123);
+            this.ClientSize = new System.Drawing.Size(1178, 1055);
             this.Controls.Add(this.First_Floor_Door);
             this.Controls.Add(this.Ground_Floor_Door);
             this.Controls.Add(this.Lift_Interior);
@@ -202,7 +210,6 @@
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.Lift_Interior)).EndInit();
