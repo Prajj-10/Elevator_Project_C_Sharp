@@ -19,3 +19,4 @@ C:\Users\prajj\source\repo 2\MovingImage\MovingImage\obj\Debug\net6.0-windows\Mo
 C:\Users\prajj\source\repo 2\MovingImage\MovingImage\bin\Debug\net6.0-windows\System.Speech.dll
 C:\Users\prajj\source\repo 2\MovingImage\MovingImage\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Speech.dll
 C:\Users\prajj\source\repo 2\MovingImage\MovingImage\obj\Debug\net6.0-windows\MovingImage.csproj.CopyComplete
+C:\Users\prajj\source\repo 2\MovingImage\MovingImage\bin\Debug\net6.0-windows\Npgsql.dll

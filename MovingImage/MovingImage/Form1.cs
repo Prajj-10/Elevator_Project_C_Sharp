@@ -2,13 +2,22 @@ using System.Diagnostics.Metrics;
 using System.Timers;
 using System;
 using System.Speech.Synthesis;
-
-
+using Npgsql;
+using System.Data;
 
 namespace MovingImage
 {
     public partial class Form1 : Form
     {
+        private string connstring = String.Format("Server={0}; Port={1};" +
+            "User Id={2}; Password={3}; Database={4};",
+            "localhost", 5432, "postgres", "12345", "elevator_log_db");
+        private NpgsqlConnection conn;
+        private string sql;
+        private NpgsqlCommand cmd;
+        private DataTable dt;
+
+
         
         
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
@@ -94,82 +103,49 @@ namespace MovingImage
            
            
            
-            /*for (int i = 1; i < 40; i++)
-            {
-                newY = Lift_Interior.Location.Y + dY;
-
-                Lift_Interior.Location = new Point(Lift_Interior.Location.X, newY);
-                Thread.Sleep(100);
-            }*/
+           
 
         }
 
         private void OpenButtonClick(object sender, EventArgs e)
         {
-            if(First_Floor_Door.Size.Width == 0 || Ground_Floor_Door.Size.Width == 0)
+            buttonOpen.BackColor = Color.Firebrick;
+            synthesizer.SpeakAsync("Opening Door.");
+            Thread.Sleep(200);
+            open.Play();
+
+            TimerOpen.Enabled = true;
+           /* if (First_Floor_Door.Size.Width == 0 || Ground_Floor_Door.Size.Width == 0)
             {
-                synthesizer.Speak("Door is already open ! ");
+                synthesizer.SpeakAsync("Door is already open ! ");
             }
             else 
             {
-                buttonOpen.BackColor = Color.Firebrick;
-                synthesizer.Speak("Opening Door.");
-                open.Play();
-
-                TimerOpen.Enabled = true;
-            }
+                
+            }*/
             
 
-           /* for (int i = 1; i < 10; i++)
-            {
-
-
-
-                *//*     pictureBoxLeft.Size = new Size(pictureBoxLeft.Size.Width - dX, pictureBoxLeft.Size.Height);
-                     Task.Delay(500);
-                     pictureBoxLeft.Location = new Point(pictureBoxLeft.Location.X, pictureBoxLeft.Location.Y);
-                     Task.Delay(500);
-     */
-
-                /*pictureBoxRight.Size = new Size(pictureBoxRight.Size.Width - dX, pictureBoxRight.Size.Height);
-                Task.Delay(500);*//*
-
-                newX = Left_Door.Location.X - dX;
-                Left_Door.Location = new Point(newX, Left_Door.Location.Y);
-
-                newX = Right_Door.Location.X + dX;
-                Right_Door.Location = new Point(newX, Right_Door.Location.Y);
-                Thread.Sleep(200);
-
-
-            }*/
+           
         }
 
         private void CloseButtonClick(object sender, EventArgs e)
         {
-            if(First_Floor_Door.Size.Width == 210 || Ground_Floor_Door.Size.Width == 210)
+            buttonClose.BackColor = Color.Firebrick;
+            synthesizer.SpeakAsync("Closing Door.");
+            Thread.Sleep(200);
+            close.Play();
+
+            TimerClose.Enabled = true;
+           /* if (First_Floor_Door.Size.Width == 210 || Ground_Floor_Door.Size.Width == 210)
             {
-                synthesizer.Speak("Door is already closed !!");
+                synthesizer.SpeakAsync("Door is already closed !!");
             }
             else
             {
-                buttonClose.BackColor = Color.Firebrick;
-                synthesizer.Speak("Closing Door.");
-                close.Play();
-
-                TimerClose.Enabled = true;
-            }
-            
-           
-           /* for (int i = 1; i < 10; i++)
-            {
-                newX = Left_Door.Location.X + dX;
-                Left_Door.Location = new Point(newX, Left_Door.Location.Y);
-
-                newX = Right_Door.Location.X - dX;
-                Right_Door.Location = new Point(newX, Right_Door.Location.Y);
-                Thread.Sleep(200);
+                
             }*/
+            
+          
         }
 
         private void TimerUp_Tick(object sender, EventArgs e)
@@ -303,14 +279,34 @@ namespace MovingImage
             }
         }
 
-        private void Lift_Interior_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
+            conn = new NpgsqlConnection(connstring);
+            Console.WriteLine(conn);
+            Select();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Select()
         {
+            try
+            {
+                conn.Open();
+                sql = @"select * from log_details where log_id =1";
+                cmd = new NpgsqlCommand(sql, conn);
+                dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                conn.Close(); 
+                dgvLogData.DataSource = null; // reset datagridview
+                dgvLogData.DataSource = dt;
 
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+            }
         }
+
+        
     }
 }
