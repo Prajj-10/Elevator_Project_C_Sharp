@@ -204,21 +204,21 @@
             this.dgvLogData.AllowUserToOrderColumns = true;
             this.dgvLogData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLogData.Location = new System.Drawing.Point(1170, 152);
+            this.dgvLogData.Location = new System.Drawing.Point(1097, 152);
             this.dgvLogData.MultiSelect = false;
             this.dgvLogData.Name = "dgvLogData";
             this.dgvLogData.ReadOnly = true;
             this.dgvLogData.RowHeadersWidth = 62;
             this.dgvLogData.RowTemplate.Height = 33;
             this.dgvLogData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLogData.Size = new System.Drawing.Size(813, 619);
+            this.dgvLogData.Size = new System.Drawing.Size(1219, 619);
             this.dgvLogData.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2006, 1319);
+            this.ClientSize = new System.Drawing.Size(2345, 1536);
             this.Controls.Add(this.dgvLogData);
             this.Controls.Add(this.First_Floor_Door);
             this.Controls.Add(this.Ground_Floor_Door);
@@ -233,7 +233,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Lift_Form";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.Lift_Interior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_Floor_Door)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.First_Floor_Door)).EndInit();
