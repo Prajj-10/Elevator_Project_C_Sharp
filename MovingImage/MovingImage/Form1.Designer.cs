@@ -47,6 +47,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dgvLogData = new System.Windows.Forms.DataGridView();
+            this.buttonShowLogs = new System.Windows.Forms.Button();
+            this.buttonClearLogs = new System.Windows.Forms.Button();
+            this.buttonHideLogs = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Lift_Interior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_Floor_Door)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.First_Floor_Door)).BeginInit();
@@ -202,23 +205,61 @@
             this.dgvLogData.AllowUserToAddRows = false;
             this.dgvLogData.AllowUserToDeleteRows = false;
             this.dgvLogData.AllowUserToOrderColumns = true;
-            this.dgvLogData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLogData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLogData.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvLogData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLogData.Location = new System.Drawing.Point(1097, 152);
+            this.dgvLogData.Location = new System.Drawing.Point(1079, 152);
             this.dgvLogData.MultiSelect = false;
             this.dgvLogData.Name = "dgvLogData";
             this.dgvLogData.ReadOnly = true;
             this.dgvLogData.RowHeadersWidth = 62;
             this.dgvLogData.RowTemplate.Height = 33;
             this.dgvLogData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLogData.Size = new System.Drawing.Size(1219, 619);
+            this.dgvLogData.Size = new System.Drawing.Size(995, 619);
             this.dgvLogData.TabIndex = 11;
+            // 
+            // buttonShowLogs
+            // 
+            this.buttonShowLogs.Location = new System.Drawing.Point(1687, 786);
+            this.buttonShowLogs.Name = "buttonShowLogs";
+            this.buttonShowLogs.Size = new System.Drawing.Size(125, 34);
+            this.buttonShowLogs.TabIndex = 12;
+            this.buttonShowLogs.Text = "Show Logs";
+            this.buttonShowLogs.UseVisualStyleBackColor = true;
+            this.buttonShowLogs.Click += new System.EventHandler(this.buttonShowLogs_Click);
+            // 
+            // buttonClearLogs
+            // 
+            this.buttonClearLogs.Enabled = false;
+            this.buttonClearLogs.Location = new System.Drawing.Point(1949, 786);
+            this.buttonClearLogs.Name = "buttonClearLogs";
+            this.buttonClearLogs.Size = new System.Drawing.Size(125, 34);
+            this.buttonClearLogs.TabIndex = 13;
+            this.buttonClearLogs.Text = "Clear Logs";
+            this.buttonClearLogs.UseVisualStyleBackColor = true;
+            this.buttonClearLogs.Click += new System.EventHandler(this.buttonClearLogs_Click);
+            // 
+            // buttonHideLogs
+            // 
+            this.buttonHideLogs.Enabled = false;
+            this.buttonHideLogs.Location = new System.Drawing.Point(1818, 786);
+            this.buttonHideLogs.Name = "buttonHideLogs";
+            this.buttonHideLogs.Size = new System.Drawing.Size(125, 34);
+            this.buttonHideLogs.TabIndex = 14;
+            this.buttonHideLogs.Text = "Hide Logs";
+            this.buttonHideLogs.UseVisualStyleBackColor = true;
+            this.buttonHideLogs.Click += new System.EventHandler(this.buttonHideLogs_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2345, 1536);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(2099, 1570);
+            this.Controls.Add(this.buttonHideLogs);
+            this.Controls.Add(this.buttonClearLogs);
+            this.Controls.Add(this.buttonShowLogs);
             this.Controls.Add(this.dgvLogData);
             this.Controls.Add(this.First_Floor_Door);
             this.Controls.Add(this.Ground_Floor_Door);
@@ -264,5 +305,8 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private DataGridView dgvLogData;
+        private Button buttonShowLogs;
+        private Button buttonClearLogs;
+        private Button buttonHideLogs;
     }
 }

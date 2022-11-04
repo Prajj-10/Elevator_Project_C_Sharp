@@ -29,12 +29,15 @@ namespace MovingImage
         System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
         // player.Play();
 
+      
+
 
 
         public Form1()
         {
             InitializeComponent();
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+            dgvLogData.Visible = false;
 
             /*buttonUp.Click += new System.EventHandler(ButtonClicked);
             buttonDown.Click += new System.EventHandler(ButtonClicked);
@@ -121,59 +124,6 @@ namespace MovingImage
                     }
                 default: return "Invalid Error";
             }
-
-
-            /*if (clicked.Name == "buttonUp")
-            {
-                if (TimerUp.Enabled)
-                {
-                    return "Going Up from Ground Floor to First Floor";
-                }
-               
-            }
-            else if (clicked.Name == "buttonDown")
-            {
-                if (TimerDown.Enabled)
-                {
-                    return "Going Down from First Floor to Ground Floor";
-                }
-                else
-                {
-                    return "";
-                }
-
-            }
-            else if (clicked.Name == "buttonOpen")
-            {
-                if (TimerOpen.Enabled && Lift_Interior.Location.Y == 696)
-                {
-                    return "Door opened at Ground Floor";
-                }
-
-                else if (!TimerOpen.Enabled && Lift_Interior.Location.Y == 96)
-                {
-                    return "Door opened at First Floor";
-                }
-                else
-                {
-                    return "";
-                }
-            }
-            else
-            {
-                if (TimerClose.Enabled && Lift_Interior.Location.Y == 696)
-                {
-                    return "Door closed at Ground Floor";
-                }
-                else if (TimerClose.Enabled && Lift_Interior.Location.Y == 96)
-                {
-                    return "Door closed at First Floor";
-                }
-                else
-                {
-                    return "";
-                }
-            }*/
         }
 
         /* int newX = 0;
@@ -185,25 +135,33 @@ namespace MovingImage
 
         public void UpButtonClick(object sender, EventArgs e)
         {
-          
-            // Console.Beep(900, 1000);
-            buttonUp.BackColor = Color.Firebrick;
-            ding.Play();
-            synthesizer.Speak("Going Up.");
-
-            if (Ground_Floor_Door.Size.Width == 0)
+            if (Lift_Interior.Location.Y == 696)
             {
-                Timer_Close_Ground_Floor.Enabled = true;
-                InsertData(sender, e);
-                Select();
+                buttonUp.BackColor = Color.Firebrick;
+                ding.Play();
+                synthesizer.Speak("Going Up.");
 
+                if (Ground_Floor_Door.Size.Width == 0)
+                {
+                    Timer_Close_Ground_Floor.Enabled = true;
+                    InsertData(sender, e);
+                    Select();
+
+
+                }
+                else
+                {
+                    TimerUp.Enabled = true;
+                    InsertData(sender, e);
+                    Select();
+                }
             }
             else
             {
-                TimerUp.Enabled = true;
-                InsertData(sender, e);
-                Select();
+                synthesizer.Speak("You are alredy at First Floor. ");
             }
+            // Console.Beep(900, 1000);
+            
             
             // MessageBox.Show(ButtonClicked((Button)sender, e));
             // MessageBox.Show(ButtonAction((Button)sender, e));
@@ -211,27 +169,34 @@ namespace MovingImage
 
         private void DownButtonClick(object sender, EventArgs e)
         {
-
-            buttonDown.BackColor = Color.Firebrick;
-            ding.Play();
-            synthesizer.Speak("Going Down.");
-
-
-            if (First_Floor_Door.Size.Width == 0)
+            if (Lift_Interior.Location.Y == 96)
             {
-                Timer_Close_First_Floor.Enabled = true;
-                InsertData(sender, e);
-                Select();
+                buttonDown.BackColor = Color.Firebrick;
+                ding.Play();
+                synthesizer.Speak("Going Down.");
 
 
+                if (First_Floor_Door.Size.Width == 0)
+                {
+                    Timer_Close_First_Floor.Enabled = true;
+                    InsertData(sender, e);
+                    Select();
+
+
+                }
+                else
+                {
+                    TimerDown.Enabled = true;
+                    InsertData(sender, e);
+                    Select();
+
+                }
             }
             else
             {
-                TimerDown.Enabled = true;
-                InsertData(sender, e);
-                Select();
-
+                synthesizer.Speak("You are already at Ground Floor.");
             }
+            
             // MessageBox.Show(ButtonClicked((Button)sender, e));
 
         }
@@ -341,7 +306,7 @@ namespace MovingImage
 
                 synthesizer.Speak("You have reached First Floor.");
                 open.Play();
-                Select();
+                // Select();
             }
 
 
@@ -361,7 +326,7 @@ namespace MovingImage
                 Thread.Sleep(200);
                 synthesizer.Speak("You have reached Ground Floor.");
                 open.Play();
-                Select();
+                //Select();
             }
 
         }
@@ -497,7 +462,7 @@ namespace MovingImage
                 string button = ButtonClicked((Button)sender, e);
                 string action = ButtonAction((Button)sender, e);
                 conn.Open();
-                sql = String.Format("select * from log_insert('{0}', '{1}', '{2}', '{3}');", button, DateTime.Now.ToString("mm/dd/yyyy"), DateTime.Now.ToString("h:mm:ss tt"), action);
+                sql = String.Format("select * from log_insert('{0}', '{1}', '{2}', '{3}');", button, DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("h:mm:ss tt"), action);
                 // MessageBox.Show(sql);
 
                 // sql = @"select * from log_insert('_button', '_date', '_time', '_action');";
@@ -526,7 +491,54 @@ namespace MovingImage
 
             }
         }
+        private void Delete_Logs()
+        {
+            try
+            {
+                conn.Open();
+                sql = @"TRUNCATE log_details restart identity;";
+              
+                cmd = new NpgsqlCommand(sql, conn);
+              
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+              
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
+
+            }
+            
+        }
 
 
+        private void buttonShowLogs_Click(object sender, EventArgs e)
+        {
+            dgvLogData.Visible = true;
+            Select();
+            buttonShowLogs.Enabled = false;
+            buttonHideLogs.Enabled = true;
+            buttonClearLogs.Enabled = true;
+        }
+
+        private void buttonHideLogs_Click(object sender, EventArgs e)
+        {
+            dgvLogData.Visible = false;
+            buttonHideLogs.Enabled=false;
+            buttonShowLogs.Enabled=true;
+            buttonClearLogs.Enabled=false;
+        }
+
+        private void buttonClearLogs_Click(object sender, EventArgs e)
+        {
+            Delete_Logs();
+            Select();
+            buttonClearLogs.Enabled = false;
+            buttonHideLogs.Enabled = true;
+            buttonShowLogs.Enabled = true;
+        }
     }
 }
