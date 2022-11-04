@@ -125,9 +125,6 @@ namespace MovingImage
                 default: return "Invalid Error";
             }
         }
-
-        /* int newX = 0;
-         int newY = 0;*/
         int dX = 10;
         int dY = 10;
 
@@ -135,6 +132,12 @@ namespace MovingImage
 
         public void UpButtonClick(object sender, EventArgs e)
         {
+            buttonDown.Enabled = false;
+            buttonUp.Enabled = false;
+            buttonOpen.Enabled = false;
+            buttonClose.Enabled = false;
+            Thread.Sleep(10000);
+
             if (Lift_Interior.Location.Y == 696)
             {
                 buttonUp.BackColor = Color.Firebrick;
@@ -146,29 +149,39 @@ namespace MovingImage
                     Timer_Close_Ground_Floor.Enabled = true;
                     InsertData(sender, e);
                     Select();
-
+                  
+                    
 
                 }
                 else
                 {
+                  
                     TimerUp.Enabled = true;
                     InsertData(sender, e);
                     Select();
+                    
+                  
                 }
             }
             else
             {
                 synthesizer.Speak("You are alredy at First Floor. ");
             }
+            
+            buttonDown.Enabled = true;
+            buttonUp.Enabled = true;
+            buttonOpen.Enabled = true;
+            buttonClose.Enabled = true;
             // Console.Beep(900, 1000);
-            
-            
+
+
             // MessageBox.Show(ButtonClicked((Button)sender, e));
             // MessageBox.Show(ButtonAction((Button)sender, e));
         }
 
         private void DownButtonClick(object sender, EventArgs e)
         {
+          
             if (Lift_Interior.Location.Y == 96)
             {
                 buttonDown.BackColor = Color.Firebrick;
@@ -178,6 +191,7 @@ namespace MovingImage
 
                 if (First_Floor_Door.Size.Width == 0)
                 {
+                    
                     Timer_Close_First_Floor.Enabled = true;
                     InsertData(sender, e);
                     Select();
@@ -203,6 +217,7 @@ namespace MovingImage
 
         private void OpenButtonClick(object sender, EventArgs e)
         {
+       
             if (Lift_Interior.Location.Y == 696)
             {
                 if (Ground_Floor_Door.Size.Width == 0)
@@ -247,6 +262,7 @@ namespace MovingImage
         }
         private void CloseButtonClick(object sender, EventArgs e)
         {
+           
             if (Lift_Interior.Location.Y == 696)
             {
                 if (Ground_Floor_Door.Size.Width == 210)
@@ -448,9 +464,9 @@ namespace MovingImage
         private void Form1_Load_1(object sender, EventArgs e)
         {
             conn = new NpgsqlConnection(connstring);
-            Console.WriteLine(conn);
-            // Select();
             
+            // Select();
+
         }
 
 
