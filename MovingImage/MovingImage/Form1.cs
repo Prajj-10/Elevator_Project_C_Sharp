@@ -9,6 +9,8 @@ namespace MovingImage
 {
     public partial class Form1 : Form
     {
+        int lift_interior_ground_location = 978;
+        int lift_interior_first_location = 96;
         private string connstring = String.Format("Server={0}; Port={1};" +
             "User Id={2}; Password={3}; Database={4};",
             "localhost", 5432, "postgres", "12345", "elevator_log_db");
@@ -38,6 +40,7 @@ namespace MovingImage
             InitializeComponent();
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
             dgvLogData.Visible = false;
+            
 
             /*buttonUp.Click += new System.EventHandler(ButtonClicked);
             buttonDown.Click += new System.EventHandler(ButtonClicked);
@@ -96,12 +99,12 @@ namespace MovingImage
                     }
                     
                 case "buttonOpen":
-                    if (TimerOpen.Enabled && Lift_Interior.Location.Y == 696)
+                    if (TimerOpen.Enabled && Lift_Interior.Location.Y == lift_interior_ground_location)
                     {
                         return "Door opened at Ground Floor";
                     }
 
-                    else if (!TimerOpen.Enabled && Lift_Interior.Location.Y == 96)
+                    else if (!TimerOpen.Enabled && Lift_Interior.Location.Y == lift_interior_first_location)
                     {
                         return "Door opened at First Floor";
                     }
@@ -110,11 +113,11 @@ namespace MovingImage
                         return "Invalid Error";
                     }
                 case "buttonClose":
-                    if (TimerClose.Enabled && Lift_Interior.Location.Y == 696)
+                    if (TimerClose.Enabled && Lift_Interior.Location.Y == lift_interior_ground_location)
                     {
                         return "Door closed at Ground Floor";
                     }
-                    else if (TimerClose.Enabled && Lift_Interior.Location.Y == 96)
+                    else if (TimerClose.Enabled && Lift_Interior.Location.Y == lift_interior_first_location)
                     {
                         return "Door closed at First Floor";
                     }
@@ -125,20 +128,17 @@ namespace MovingImage
                 default: return "Invalid Error";
             }
         }
-        int dX = 10;
-        int dY = 10;
+        int dX = 2;
+        int dY = 2;
 
 
 
         public void UpButtonClick(object sender, EventArgs e)
         {
-            buttonDown.Enabled = false;
-            buttonUp.Enabled = false;
-            buttonOpen.Enabled = false;
-            buttonClose.Enabled = false;
-            Thread.Sleep(10000);
+          
+            
 
-            if (Lift_Interior.Location.Y == 696)
+            if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 buttonUp.BackColor = Color.Firebrick;
                 ding.Play();
@@ -149,8 +149,8 @@ namespace MovingImage
                     Timer_Close_Ground_Floor.Enabled = true;
                     InsertData(sender, e);
                     Select();
-                  
-                    
+                    pictureBox4.Image = Properties.Resources.Arrow_Up;
+
 
                 }
                 else
@@ -159,8 +159,9 @@ namespace MovingImage
                     TimerUp.Enabled = true;
                     InsertData(sender, e);
                     Select();
-                    
-                  
+                    pictureBox4.Image = Properties.Resources.Arrow_Up;
+
+
                 }
             }
             else
@@ -168,10 +169,7 @@ namespace MovingImage
                 synthesizer.Speak("You are alredy at First Floor. ");
             }
             
-            buttonDown.Enabled = true;
-            buttonUp.Enabled = true;
-            buttonOpen.Enabled = true;
-            buttonClose.Enabled = true;
+        
             // Console.Beep(900, 1000);
 
 
@@ -181,8 +179,9 @@ namespace MovingImage
 
         private void DownButtonClick(object sender, EventArgs e)
         {
-          
-            if (Lift_Interior.Location.Y == 96)
+        
+
+            if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 buttonDown.BackColor = Color.Firebrick;
                 ding.Play();
@@ -195,7 +194,7 @@ namespace MovingImage
                     Timer_Close_First_Floor.Enabled = true;
                     InsertData(sender, e);
                     Select();
-
+                    pictureBox4.Image = Properties.Resources.Arrow_Down;
 
                 }
                 else
@@ -203,6 +202,7 @@ namespace MovingImage
                     TimerDown.Enabled = true;
                     InsertData(sender, e);
                     Select();
+                    pictureBox4.Image = Properties.Resources.Arrow_Down;
 
                 }
             }
@@ -211,14 +211,17 @@ namespace MovingImage
                 synthesizer.Speak("You are already at Ground Floor.");
             }
             
+       
             // MessageBox.Show(ButtonClicked((Button)sender, e));
 
         }
 
         private void OpenButtonClick(object sender, EventArgs e)
         {
-       
-            if (Lift_Interior.Location.Y == 696)
+            
+           
+
+            if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 if (Ground_Floor_Door.Size.Width == 0)
                 {
@@ -238,7 +241,7 @@ namespace MovingImage
                     Select();
                 }
             }
-            else if (Lift_Interior.Location.Y == 96)
+            else if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 if (First_Floor_Door.Size.Width == 0)
                 {
@@ -258,12 +261,14 @@ namespace MovingImage
                     Select();
                 }
             }
+         
             // MessageBox.Show(ButtonClicked((Button)sender, e));
         }
         private void CloseButtonClick(object sender, EventArgs e)
         {
-           
-            if (Lift_Interior.Location.Y == 696)
+          
+
+            if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 if (Ground_Floor_Door.Size.Width == 210)
                 {
@@ -281,7 +286,7 @@ namespace MovingImage
 
                 }
             }
-            else if (Lift_Interior.Location.Y == 96)
+            else if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 if (First_Floor_Door.Size.Width == 210)
                 {
@@ -299,6 +304,7 @@ namespace MovingImage
 
                 }
             }
+       
             // MessageBox.Show(ButtonClicked((Button)sender, e));
             // Console.WriteLine(ButtonClicked((Button)sender, e));
 
@@ -313,7 +319,7 @@ namespace MovingImage
             Lift_Interior.Location = new Point(Lift_Interior.Location.X, Lift_Interior.Location.Y - (dY));
             TimerUp.Enabled = true;
 
-            if (Lift_Interior.Location.Y == 96)
+            if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 TimerUp.Enabled = false;
                 TimerOpen.Enabled = true;
@@ -321,6 +327,10 @@ namespace MovingImage
                 Thread.Sleep(200);
 
                 synthesizer.Speak("You have reached First Floor.");
+                pictureBox4.Image = Properties.Resources.First_Floor;
+                pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+                
+                
                 open.Play();
                 // Select();
             }
@@ -334,13 +344,16 @@ namespace MovingImage
 
             Lift_Interior.Location = new Point(Lift_Interior.Location.X, Lift_Interior.Location.Y + (dY));
             TimerDown.Enabled = true;
-            if (Lift_Interior.Location.Y == 696)
+            if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 TimerDown.Enabled = false;
                 TimerOpen.Enabled = true;
                 buttonDown.BackColor = Color.Gray;
                 Thread.Sleep(200);
                 synthesizer.Speak("You have reached Ground Floor.");
+                pictureBox4.Image = Properties.Resources.Ground_Floor;
+                pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+
                 open.Play();
                 //Select();
             }
@@ -350,7 +363,7 @@ namespace MovingImage
 
         private void TimerOpen_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == 696)
+            if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width - dX, Ground_Floor_Door.Size.Height);
                 // Right_Door.Size = new Size(Right_Door.Size.Width - dX, Right_Door.Size.Height);
@@ -362,7 +375,7 @@ namespace MovingImage
 
                 }
             }
-            if (Lift_Interior.Location.Y == 96)
+            if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width - dX, First_Floor_Door.Size.Height);
                 TimerOpen.Enabled = true;
@@ -376,7 +389,7 @@ namespace MovingImage
         }
         private void TimerClose_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == 696)
+            if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width + dX, Ground_Floor_Door.Size.Height);
                 TimerClose.Enabled = true;
@@ -388,7 +401,7 @@ namespace MovingImage
 
                 }
             }
-            if (Lift_Interior.Location.Y == 96)
+            if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width + dX, First_Floor_Door.Size.Height);
                 TimerClose.Enabled = true;
@@ -404,9 +417,9 @@ namespace MovingImage
 
         private void Timer_Close_1F_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == 96)
+            if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
-                First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width + dX, First_Floor_Door.Size.Height);
+                First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width + 1, First_Floor_Door.Size.Height);
                 Timer_Close_First_Floor.Enabled = true;
                 if (First_Floor_Door.Size.Width == 210)
                 {
@@ -416,7 +429,7 @@ namespace MovingImage
 
 
                 }
-                if (Lift_Interior.Location.Y == 696)
+                if (Lift_Interior.Location.Y == lift_interior_ground_location)
                 {
                     synthesizer.Speak("You have reached Ground Floor.");
                 }
@@ -425,9 +438,9 @@ namespace MovingImage
 
         private void Timer_Close_Ground_Floor_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == 696)
+            if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
-                Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width + dX, Ground_Floor_Door.Size.Height);
+                Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width + 1, Ground_Floor_Door.Size.Height);
                 Timer_Close_Ground_Floor.Enabled = true;
                 if (Ground_Floor_Door.Size.Width == 210)
                 {
@@ -556,5 +569,7 @@ namespace MovingImage
             buttonHideLogs.Enabled = true;
             buttonShowLogs.Enabled = true;
         }
+
+       
     }
 }
