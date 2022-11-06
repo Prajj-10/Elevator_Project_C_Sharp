@@ -51,6 +51,7 @@
             this.buttonClearLogs = new System.Windows.Forms.Button();
             this.buttonHideLogs = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.Lift_Interior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_Floor_Door)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.First_Floor_Door)).BeginInit();
@@ -109,7 +110,7 @@
             // 
             this.buttonDown.BackColor = System.Drawing.Color.Gray;
             this.buttonDown.Image = ((System.Drawing.Image)(resources.GetObject("buttonDown.Image")));
-            this.buttonDown.Location = new System.Drawing.Point(774, 839);
+            this.buttonDown.Location = new System.Drawing.Point(774, 817);
             this.buttonDown.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(145, 144);
@@ -121,7 +122,7 @@
             // 
             this.buttonOpen.BackColor = System.Drawing.Color.Gray;
             this.buttonOpen.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpen.Image")));
-            this.buttonOpen.Location = new System.Drawing.Point(879, 1006);
+            this.buttonOpen.Location = new System.Drawing.Point(875, 978);
             this.buttonOpen.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(145, 144);
@@ -133,7 +134,7 @@
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Gray;
             this.buttonClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonClose.Image")));
-            this.buttonClose.Location = new System.Drawing.Point(669, 1006);
+            this.buttonClose.Location = new System.Drawing.Point(678, 978);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(145, 144);
@@ -214,7 +215,7 @@
             this.dgvLogData.AllowUserToDeleteRows = false;
             this.dgvLogData.AllowUserToOrderColumns = true;
             this.dgvLogData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvLogData.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvLogData.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvLogData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLogData.Location = new System.Drawing.Point(1139, 161);
@@ -262,19 +263,27 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox4.Location = new System.Drawing.Point(726, 329);
+            this.pictureBox4.Location = new System.Drawing.Point(722, 329);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(253, 481);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.Size = new System.Drawing.Size(253, 451);
             this.pictureBox4.TabIndex = 15;
             this.pictureBox4.TabStop = false;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(2099, 1570);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(2211, 1256);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.buttonHideLogs);
             this.Controls.Add(this.buttonClearLogs);
@@ -330,5 +339,6 @@
         private Button buttonClearLogs;
         private Button buttonHideLogs;
         private PictureBox pictureBox4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

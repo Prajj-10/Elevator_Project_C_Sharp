@@ -4,9 +4,12 @@ using System;
 using System.Speech.Synthesis;
 using Npgsql;
 using System.Data;
+using System.ComponentModel;
+using System.Threading;
 
 namespace MovingImage
 {
+    
     public partial class Form1 : Form
     {
         int lift_interior_ground_location = 978;
@@ -31,7 +34,7 @@ namespace MovingImage
         System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
         // player.Play();
 
-      
+        
 
 
 
@@ -128,8 +131,8 @@ namespace MovingImage
                 default: return "Invalid Error";
             }
         }
-        int dX = 2;
-        int dY = 2;
+        int dX = 4;
+        int dY = 4;
 
 
 
@@ -328,7 +331,7 @@ namespace MovingImage
 
                 synthesizer.Speak("You have reached First Floor.");
                 pictureBox4.Image = Properties.Resources.First_Floor;
-                pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
                 
                 
                 open.Play();
@@ -352,7 +355,7 @@ namespace MovingImage
                 Thread.Sleep(200);
                 synthesizer.Speak("You have reached Ground Floor.");
                 pictureBox4.Image = Properties.Resources.Ground_Floor;
-                pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
 
                 open.Play();
                 //Select();
@@ -477,7 +480,10 @@ namespace MovingImage
         private void Form1_Load_1(object sender, EventArgs e)
         {
             conn = new NpgsqlConnection(connstring);
-            
+            int w = Screen.PrimaryScreen.Bounds.Width;
+            int h = Screen.PrimaryScreen.Bounds.Height;
+            this.Location = new Point(0, 0);
+            this.Size = new Size(w, h);
             // Select();
 
         }
@@ -570,6 +576,19 @@ namespace MovingImage
             buttonShowLogs.Enabled = true;
         }
 
-       
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
     }
 }
