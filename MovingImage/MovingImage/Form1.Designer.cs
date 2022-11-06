@@ -97,7 +97,7 @@
             // 
             this.buttonUp.BackColor = System.Drawing.Color.Gray;
             this.buttonUp.Image = ((System.Drawing.Image)(resources.GetObject("buttonUp.Image")));
-            this.buttonUp.Location = new System.Drawing.Point(774, 113);
+            this.buttonUp.Location = new System.Drawing.Point(774, 150);
             this.buttonUp.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(145, 144);
@@ -109,7 +109,7 @@
             // 
             this.buttonDown.BackColor = System.Drawing.Color.Gray;
             this.buttonDown.Image = ((System.Drawing.Image)(resources.GetObject("buttonDown.Image")));
-            this.buttonDown.Location = new System.Drawing.Point(774, 881);
+            this.buttonDown.Location = new System.Drawing.Point(774, 839);
             this.buttonDown.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(145, 144);
@@ -121,7 +121,7 @@
             // 
             this.buttonOpen.BackColor = System.Drawing.Color.Gray;
             this.buttonOpen.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpen.Image")));
-            this.buttonOpen.Location = new System.Drawing.Point(887, 1054);
+            this.buttonOpen.Location = new System.Drawing.Point(879, 1006);
             this.buttonOpen.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(145, 144);
@@ -133,7 +133,7 @@
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Gray;
             this.buttonClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonClose.Image")));
-            this.buttonClose.Location = new System.Drawing.Point(672, 1054);
+            this.buttonClose.Location = new System.Drawing.Point(669, 1006);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(145, 144);
@@ -262,9 +262,9 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox4.Location = new System.Drawing.Point(728, 281);
+            this.pictureBox4.Location = new System.Drawing.Point(726, 329);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(253, 499);
+            this.pictureBox4.Size = new System.Drawing.Size(253, 481);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 15;
             this.pictureBox4.TabStop = false;
@@ -273,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(2099, 1570);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.buttonHideLogs);
@@ -290,6 +290,7 @@
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Lift_Form";
