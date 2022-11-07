@@ -6,6 +6,7 @@ using Npgsql;
 using System.Data;
 using System.ComponentModel;
 using System.Threading;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MovingImage
 {
@@ -13,15 +14,20 @@ namespace MovingImage
     public partial class Form1 : Form
     {
         Timers tm = new Timers();
+        // Database_Connection db = new Database_Connection(); 
         int lift_interior_ground_location = 978;
         int lift_interior_first_location = 96;
-        private string connstring = String.Format("Server={0}; Port={1};" +
+       /* private string connstring = String.Format("Server={0}; Port={1};" +
             "User Id={2}; Password={3}; Database={4};",
             "localhost", 5432, "postgres", "12345", "elevator_log_db");
         private NpgsqlConnection conn;
         private string sql;
-        private NpgsqlCommand cmd;
-        private DataTable dt;
+        private NpgsqlCommand cmd;*/
+        
+
+        Buttons btn = new Buttons();
+
+        Button_Functions buttonF = new Button_Functions();
 
 
 
@@ -52,7 +58,7 @@ namespace MovingImage
             buttonClose.Click += new System.EventHandler(ButtonClicked);*/
 
         }
-        public static string ButtonClicked(object sender, EventArgs e)
+        /*public string ButtonClicked(object sender, EventArgs e)
         {
             Button clicked = (Button)sender;
             // MessageBox.Show(clicked.Text);
@@ -73,9 +79,22 @@ namespace MovingImage
                 return "Close";
             }
 
+        }*/
+
+        public string returnButton(object sender, EventArgs e)
+        {
+            string button = buttonF.ButtonClicked(sender, e);
+            return button;
         }
 
-        public string ButtonAction(object sender2, EventArgs e2)
+        public string returnButtonAction(object sender2, EventArgs e2)
+        {
+            string action = buttonF.ButtonAction(sender2, e2, Lift_Interior, TimerUp, Timer_Close_Ground_Floor, TimerDown, Timer_Close_First_Floor, TimerOpen, TimerClose);
+
+            return action;
+        }
+
+        /*public string ButtonAction(object sender2, EventArgs e2)
         {
             Button clicked = (Button)sender2;
 
@@ -131,57 +150,33 @@ namespace MovingImage
                     }
                 default: return "Invalid Error";
             }
-        }
+        }*/
      
 
 
         public void UpButtonClick(object sender, EventArgs e)
         {
-          
-            if (Lift_Interior.Location.Y == lift_interior_ground_location)
-            {
-                buttonUp.BackColor = Color.Firebrick;
-                ding.Play();
-                synthesizer.Speak("Going Up.");
 
-                if (Ground_Floor_Door.Size.Width == 0)
-                {
-                    Timer_Close_Ground_Floor.Enabled = true;
-                    InsertData(sender, e);
-                    Select();
-                    DisplayBox.Image = Properties.Resources.Arrow_Up;
+            btn.ButtonUp(Lift_Interior, Ground_Floor_Door, DisplayBox, buttonUp, Timer_Close_Ground_Floor, TimerUp, dgvLogData, sender, e);
 
-
-                }
-                else
-                {
-                  
-                    TimerUp.Enabled = true;
-                    InsertData(sender, e);
-                    Select();
-                    DisplayBox.Image = Properties.Resources.Arrow_Up;
-
-
-                }
-            }
-            else
-            {
-                synthesizer.Speak("You are alredy at First Floor. ");
-            }
             
-        
-            // Console.Beep(900, 1000);
-
-
-            // MessageBox.Show(ButtonClicked((Button)sender, e));
-            // MessageBox.Show(ButtonAction((Button)sender, e));
         }
+
+
+        // Console.Beep(900, 1000);
+
+
+        // MessageBox.Show(ButtonClicked((Button)sender, e));
+        // MessageBox.Show(ButtonAction((Button)sender, e));
 
         private void DownButtonClick(object sender, EventArgs e)
         {
-        
 
-            if (Lift_Interior.Location.Y == lift_interior_first_location)
+            btn.ButtonDown(Lift_Interior, First_Floor_Door, DisplayBox, buttonDown, TimerDown, Timer_Close_First_Floor, dgvLogData, sender, e);
+
+            // Working Code
+
+            /*if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 buttonDown.BackColor = Color.Firebrick;
                 ding.Play();
@@ -193,7 +188,7 @@ namespace MovingImage
                     
                     Timer_Close_First_Floor.Enabled = true;
                     InsertData(sender, e);
-                    Select();
+                    db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Down;
 
                 }
@@ -201,7 +196,7 @@ namespace MovingImage
                 {
                     TimerDown.Enabled = true;
                     InsertData(sender, e);
-                    Select();
+                    db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Down;
 
                 }
@@ -209,17 +204,20 @@ namespace MovingImage
             else
             {
                 synthesizer.Speak("You are already at Ground Floor.");
-            }
+            }*/
             
        
-            // MessageBox.Show(ButtonClicked((Button)sender, e));
 
         }
 
         private void OpenButtonClick(object sender, EventArgs e)
         {
+
+            btn.ButtonOpen(Lift_Interior, Ground_Floor_Door, First_Floor_Door, buttonOpen, TimerOpen, dgvLogData, sender, e);
             
-            if (Lift_Interior.Location.Y == lift_interior_ground_location)
+            // Working Code
+
+            /*if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 if (Ground_Floor_Door.Size.Width == 0)
                 {
@@ -236,7 +234,7 @@ namespace MovingImage
 
                     TimerOpen.Enabled = true;
                     InsertData(sender, e);
-                    Select();
+                    db.Select(dgvLogData);
                 }
             }
             else if (Lift_Interior.Location.Y == lift_interior_first_location)
@@ -256,17 +254,20 @@ namespace MovingImage
 
                     TimerOpen.Enabled = true;
                     InsertData(sender, e);
-                    Select();
+                    db.Select(dgvLogData);
                 }
-            }
+            }*/
          
             // MessageBox.Show(ButtonClicked((Button)sender, e));
         }
         private void CloseButtonClick(object sender, EventArgs e)
         {
-          
 
-            if (Lift_Interior.Location.Y == lift_interior_ground_location)
+            btn.ButtonClose(Lift_Interior, Ground_Floor_Door, First_Floor_Door, buttonClose, TimerClose, dgvLogData, sender, e);
+          
+            // Working Code 
+
+           /* if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 if (Ground_Floor_Door.Size.Width == 210)
                 {
@@ -278,9 +279,10 @@ namespace MovingImage
                     synthesizer.Speak("Closing Door.");
                     Thread.Sleep(200);
                     close.Play();
+
                     TimerClose.Enabled = true;
                     InsertData(sender, e);
-                    Select();
+                    db.Select(dgvLogData);
 
                 }
             }
@@ -296,12 +298,13 @@ namespace MovingImage
                     synthesizer.Speak("Closing Door.");
                     Thread.Sleep(200);
                     close.Play();
+
                     TimerClose.Enabled = true;
                     InsertData(sender, e);
-                    Select();
+                    db.Select(dgvLogData);
 
                 }
-            }
+            }*/
        
             // MessageBox.Show(ButtonClicked((Button)sender, e));
             // Console.WriteLine(ButtonClicked((Button)sender, e));
@@ -340,30 +343,10 @@ namespace MovingImage
 
         }
 
-        private void Select()
-        {
-            try
-            {
-                conn.Open();
-                sql = @"select * from log_select();";
-                cmd = new NpgsqlCommand(sql, conn);
-                dt = new DataTable();
-                dt.Load(cmd.ExecuteReader());
-                conn.Close();
-                dgvLogData.DataSource = null; // reset datagridview
-                dgvLogData.DataSource = dt;
-
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Error : " + ex.Message);
-            }
-        }
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            conn = new NpgsqlConnection(connstring);
+            // conn = new NpgsqlConnection(connstring);
             int w = Screen.PrimaryScreen.Bounds.Width;
             int h = Screen.PrimaryScreen.Bounds.Height;
             this.Location = new Point(0, 0);
@@ -373,9 +356,8 @@ namespace MovingImage
         }
 
 
-        private void InsertData(object sender, EventArgs e)
+        /*private void InsertData(object sender, EventArgs e)
         {
-            
             try
             {
                 string button = ButtonClicked((Button)sender, e);
@@ -386,78 +368,60 @@ namespace MovingImage
 
                 // sql = @"select * from log_insert('_button', '_date', '_time', '_action');";
                 cmd = new NpgsqlCommand(sql, conn);
-                /* cmd.Parameters.AddWithValue("_button", button);
+                *//* cmd.Parameters.AddWithValue("_button", button);
                  cmd.Parameters.AddWithValue("_date", DateTime.Now.ToString("mm/dd/yyyy"));
                  cmd.Parameters.AddWithValue("_time", DateTime.Now.ToString("h:mm:ss tt"));
-                 cmd.Parameters.AddWithValue("_action", action);*/
-                 cmd.ExecuteNonQuery();
-
-                 conn.Close();
-               /* if(result == 1)
-                {
-                    MessageBox.Show("Inserted Sucessfully !");
-                }
-                else
-                {
-                    MessageBox.Show("Insert Failed.");
-                }*/
-     
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Error : " + ex.Message);
-
-            }
-        }
-        private void Delete_Logs()
-        {
-            try
-            {
-                conn.Open();
-                sql = @"TRUNCATE log_details restart identity;";
-              
-                cmd = new NpgsqlCommand(sql, conn);
-              
+                 cmd.Parameters.AddWithValue("_action", action);*//*
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
-              
+                *//* if(result == 1)
+                 {
+                     MessageBox.Show("Inserted Sucessfully !");
+                 }
+                 else
+                 {
+                     MessageBox.Show("Insert Failed.");
+                 }*//*
+
             }
             catch (Exception ex)
             {
                 conn.Close();
                 MessageBox.Show("Error : " + ex.Message);
 
-            }
-            
-        }
 
+            }
+        }*/
 
         private void buttonShowLogs_Click(object sender, EventArgs e)
         {
-            dgvLogData.Visible = true;
-            Select();
+            btn.Show_Logs(dgvLogData, buttonShowLogs, buttonHideLogs, buttonClearLogs);
+
+            /*dgvLogData.Visible = true;
+            db.Select(dgvLogData);
             buttonShowLogs.Enabled = false;
             buttonHideLogs.Enabled = true;
-            buttonClearLogs.Enabled = true;
+            buttonClearLogs.Enabled = true;*/
         }
 
         private void buttonHideLogs_Click(object sender, EventArgs e)
         {
-            dgvLogData.Visible = false;
+            btn.Hide_Logs(dgvLogData, buttonShowLogs, buttonHideLogs, buttonClearLogs);
+            /*dgvLogData.Visible = false;
             buttonHideLogs.Enabled=false;
             buttonShowLogs.Enabled=true;
-            buttonClearLogs.Enabled=false;
+            buttonClearLogs.Enabled=false;*/
         }
 
         private void buttonClearLogs_Click(object sender, EventArgs e)
         {
-            Delete_Logs();
-            Select();
+            btn.Clear_Logs(dgvLogData, buttonShowLogs, buttonHideLogs, buttonClearLogs);
+            /*db.Delete_Logs();
+            db.Select(dgvLogData);
             buttonClearLogs.Enabled = false;
             buttonHideLogs.Enabled = true;
-            buttonShowLogs.Enabled = true;
+            buttonShowLogs.Enabled = true;*/
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)

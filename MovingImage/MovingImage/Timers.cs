@@ -19,9 +19,9 @@ namespace MovingImage
         int dY = 2;
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
         
-        System.Media.SoundPlayer ding = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Elevator_Ding.wav");
+        /*System.Media.SoundPlayer ding = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Elevator_Ding.wav");
         System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
-        System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
+        System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");*/
 
         
 
@@ -44,7 +44,7 @@ namespace MovingImage
                 DisplayBox.SizeMode = PictureBoxSizeMode.CenterImage;
 
 
-                open.Play();
+                
                 // Select();
             }
         }
@@ -64,7 +64,6 @@ namespace MovingImage
                 DisplayBox.Image = Properties.Resources.Ground_Floor;
                 DisplayBox.SizeMode = PictureBoxSizeMode.CenterImage;
 
-                open.Play();
                 //Select();
             }
         }
