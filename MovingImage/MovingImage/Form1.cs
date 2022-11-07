@@ -12,6 +12,7 @@ namespace MovingImage
     
     public partial class Form1 : Form
     {
+        Timers tm = new Timers();
         int lift_interior_ground_location = 978;
         int lift_interior_first_location = 96;
         private string connstring = String.Format("Server={0}; Port={1};" +
@@ -131,16 +132,12 @@ namespace MovingImage
                 default: return "Invalid Error";
             }
         }
-        int dX = 4;
-        int dY = 4;
-
+     
 
 
         public void UpButtonClick(object sender, EventArgs e)
         {
           
-            
-
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 buttonUp.BackColor = Color.Firebrick;
@@ -152,7 +149,7 @@ namespace MovingImage
                     Timer_Close_Ground_Floor.Enabled = true;
                     InsertData(sender, e);
                     Select();
-                    pictureBox4.Image = Properties.Resources.Arrow_Up;
+                    DisplayBox.Image = Properties.Resources.Arrow_Up;
 
 
                 }
@@ -162,7 +159,7 @@ namespace MovingImage
                     TimerUp.Enabled = true;
                     InsertData(sender, e);
                     Select();
-                    pictureBox4.Image = Properties.Resources.Arrow_Up;
+                    DisplayBox.Image = Properties.Resources.Arrow_Up;
 
 
                 }
@@ -197,7 +194,7 @@ namespace MovingImage
                     Timer_Close_First_Floor.Enabled = true;
                     InsertData(sender, e);
                     Select();
-                    pictureBox4.Image = Properties.Resources.Arrow_Down;
+                    DisplayBox.Image = Properties.Resources.Arrow_Down;
 
                 }
                 else
@@ -205,7 +202,7 @@ namespace MovingImage
                     TimerDown.Enabled = true;
                     InsertData(sender, e);
                     Select();
-                    pictureBox4.Image = Properties.Resources.Arrow_Down;
+                    DisplayBox.Image = Properties.Resources.Arrow_Down;
 
                 }
             }
@@ -222,8 +219,6 @@ namespace MovingImage
         private void OpenButtonClick(object sender, EventArgs e)
         {
             
-           
-
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 if (Ground_Floor_Door.Size.Width == 0)
@@ -315,145 +310,34 @@ namespace MovingImage
 
 
         }
-
         private void TimerUp_Tick(object sender, EventArgs e)
         {
-
-            Lift_Interior.Location = new Point(Lift_Interior.Location.X, Lift_Interior.Location.Y - (dY));
-            TimerUp.Enabled = true;
-
-            if (Lift_Interior.Location.Y == lift_interior_first_location)
-            {
-                TimerUp.Enabled = false;
-                TimerOpen.Enabled = true;
-                buttonUp.BackColor = Color.Gray;
-                Thread.Sleep(200);
-
-                synthesizer.Speak("You have reached First Floor.");
-                pictureBox4.Image = Properties.Resources.First_Floor;
-                pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
-                
-                
-                open.Play();
-                // Select();
-            }
-
-
+            tm.TimerUp(Lift_Interior, DisplayBox, TimerUp, TimerOpen, buttonUp);
         }
 
         private void TimerDown_Tick(object sender, EventArgs e)
         {
-
-
-            Lift_Interior.Location = new Point(Lift_Interior.Location.X, Lift_Interior.Location.Y + (dY));
-            TimerDown.Enabled = true;
-            if (Lift_Interior.Location.Y == lift_interior_ground_location)
-            {
-                TimerDown.Enabled = false;
-                TimerOpen.Enabled = true;
-                buttonDown.BackColor = Color.Gray;
-                Thread.Sleep(200);
-                synthesizer.Speak("You have reached Ground Floor.");
-                pictureBox4.Image = Properties.Resources.Ground_Floor;
-                pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
-
-                open.Play();
-                //Select();
-            }
-
+            tm.TimerDown(Lift_Interior, DisplayBox, TimerDown, TimerOpen, buttonDown);
         }
-
-
         private void TimerOpen_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == lift_interior_ground_location)
-            {
-                Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width - dX, Ground_Floor_Door.Size.Height);
-                // Right_Door.Size = new Size(Right_Door.Size.Width - dX, Right_Door.Size.Height);
-                TimerOpen.Enabled = true;
-                if (Ground_Floor_Door.Size.Width == 0)
-                {
-                    TimerOpen.Enabled = false;
-                    buttonOpen.BackColor = Color.Gray;
-
-                }
-            }
-            if (Lift_Interior.Location.Y == lift_interior_first_location)
-            {
-                First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width - dX, First_Floor_Door.Size.Height);
-                TimerOpen.Enabled = true;
-                if (First_Floor_Door.Size.Width == 0)
-                {
-                    TimerOpen.Enabled = false;
-                    buttonOpen.BackColor = Color.Gray;
-                }
-            }
+            tm.TimerOpen(Lift_Interior, Ground_Floor_Door, First_Floor_Door, TimerOpen, buttonOpen);
 
         }
         private void TimerClose_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == lift_interior_ground_location)
-            {
-                Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width + dX, Ground_Floor_Door.Size.Height);
-                TimerClose.Enabled = true;
-                if (Ground_Floor_Door.Size.Width == 210)
-                {
-                    TimerClose.Enabled = false;
-                    buttonClose.BackColor = Color.Gray;
-
-
-                }
-            }
-            if (Lift_Interior.Location.Y == lift_interior_first_location)
-            {
-                First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width + dX, First_Floor_Door.Size.Height);
-                TimerClose.Enabled = true;
-                if (First_Floor_Door.Size.Width == 210)
-                {
-                    TimerClose.Enabled = false;
-                    buttonClose.BackColor = Color.Gray;
-                }
-            }
-
-
+            tm.TimerClose(Lift_Interior, Ground_Floor_Door, First_Floor_Door, TimerClose, buttonClose);
         }
 
         private void Timer_Close_1F_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == lift_interior_first_location)
-            {
-                First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width + 1, First_Floor_Door.Size.Height);
-                Timer_Close_First_Floor.Enabled = true;
-                if (First_Floor_Door.Size.Width == 210)
-                {
-                    Timer_Close_First_Floor.Enabled = false;
-                    TimerDown.Enabled = true;
-                    buttonDown.BackColor = Color.Gray;
-
-
-                }
-                if (Lift_Interior.Location.Y == lift_interior_ground_location)
-                {
-                    synthesizer.Speak("You have reached Ground Floor.");
-                }
-            }
+            tm.TimerFirstFloorClose(Lift_Interior, First_Floor_Door, Timer_Close_First_Floor, TimerDown, buttonDown);
         }
 
         private void Timer_Close_Ground_Floor_Tick(object sender, EventArgs e)
         {
-            if (Lift_Interior.Location.Y == lift_interior_ground_location)
-            {
-                Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width + 1, Ground_Floor_Door.Size.Height);
-                Timer_Close_Ground_Floor.Enabled = true;
-                if (Ground_Floor_Door.Size.Width == 210)
-                {
-                    Timer_Close_Ground_Floor.Enabled = false;
-                    TimerUp.Enabled = true;
-                    buttonUp.BackColor = Color.Gray;
+            tm.TimerGroundFloorClose(Lift_Interior, Ground_Floor_Door, Timer_Close_Ground_Floor, TimerUp, buttonUp);
 
-                    synthesizer.Speak("You have reached First Floor.");
-                }
-            }
         }
 
         private void Select()

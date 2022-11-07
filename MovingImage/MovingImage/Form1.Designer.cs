@@ -50,7 +50,7 @@
             this.buttonShowLogs = new System.Windows.Forms.Button();
             this.buttonClearLogs = new System.Windows.Forms.Button();
             this.buttonHideLogs = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.DisplayBox = new System.Windows.Forms.PictureBox();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.Lift_Interior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_Floor_Door)).BeginInit();
@@ -59,7 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLogData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Lift_Interior
@@ -157,7 +157,7 @@
             // First_Floor_Door
             // 
             this.First_Floor_Door.Image = ((System.Drawing.Image)(resources.GetObject("First_Floor_Door.Image")));
-            this.First_Floor_Door.Location = new System.Drawing.Point(216, 99);
+            this.First_Floor_Door.Location = new System.Drawing.Point(216, 96);
             this.First_Floor_Door.Margin = new System.Windows.Forms.Padding(2);
             this.First_Floor_Door.Name = "First_Floor_Door";
             this.First_Floor_Door.Size = new System.Drawing.Size(210, 380);
@@ -260,14 +260,14 @@
             this.buttonHideLogs.UseVisualStyleBackColor = true;
             this.buttonHideLogs.Click += new System.EventHandler(this.buttonHideLogs_Click);
             // 
-            // pictureBox4
+            // DisplayBox
             // 
-            this.pictureBox4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox4.Location = new System.Drawing.Point(722, 329);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(253, 451);
-            this.pictureBox4.TabIndex = 15;
-            this.pictureBox4.TabStop = false;
+            this.DisplayBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DisplayBox.Location = new System.Drawing.Point(722, 329);
+            this.DisplayBox.Name = "DisplayBox";
+            this.DisplayBox.Size = new System.Drawing.Size(253, 451);
+            this.DisplayBox.TabIndex = 15;
+            this.DisplayBox.TabStop = false;
             // 
             // backgroundWorker
             // 
@@ -282,9 +282,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(2211, 1256);
-            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.DisplayBox);
             this.Controls.Add(this.buttonHideLogs);
             this.Controls.Add(this.buttonClearLogs);
             this.Controls.Add(this.buttonShowLogs);
@@ -311,7 +310,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLogData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,7 +337,7 @@
         private Button buttonShowLogs;
         private Button buttonClearLogs;
         private Button buttonHideLogs;
-        private PictureBox pictureBox4;
+        private PictureBox DisplayBox;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
