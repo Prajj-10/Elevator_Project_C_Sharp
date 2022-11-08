@@ -11,8 +11,8 @@ namespace MovingImage
 {
     internal class Buttons
     {
-        int lift_interior_ground_location = 978;
-        int lift_interior_first_location = 96;
+        int lift_interior_ground_location = 1098;
+        int lift_interior_first_location = 280;
         int dX = 2;
         int dY = 2;
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
@@ -23,21 +23,25 @@ namespace MovingImage
         System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
         System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
 
-        public void ButtonUp(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox DisplayBox, Button buttonUp, Timer Timer_Close_Ground_Floor, Timer TimerUp, DataGridView dgvLogData, object sender, EventArgs e)
+        public void ButtonUp(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox DisplayBox, Button buttonUp,Button Requesting_Up, Timer Timer_Close_Ground_Floor, Timer TimerUp, DataGridView dgvLogData, object sender, EventArgs e)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
 
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
+                
                 buttonUp.BackColor = Color.Firebrick;
+                Requesting_Up.Image = Properties.Resources.Up_Light;
                 ding.Play();
                 synthesizer.Speak("Going Up.");
 
                 if (Ground_Floor_Door.Size.Width == 0)
                 {
                     Timer_Close_Ground_Floor.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Up;
+                    
 
 
                 }
@@ -45,7 +49,7 @@ namespace MovingImage
                 {
 
                     TimerUp.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData); ;
                     DisplayBox.Image = Properties.Resources.Arrow_Up;
 
@@ -59,11 +63,14 @@ namespace MovingImage
 
         }
 
-        public void ButtonDown(PictureBox Lift_Interior, PictureBox First_Floor_Door, PictureBox DisplayBox,Button buttonDown, Timer TimerDown, Timer Timer_Close_First_Floor, DataGridView dgvLogData, object sender, EventArgs e)
+        public void ButtonDown(PictureBox Lift_Interior, PictureBox First_Floor_Door, PictureBox DisplayBox,Button buttonDown, Button Requesting_Down, Timer TimerDown, Timer Timer_Close_First_Floor, DataGridView dgvLogData, object sender, EventArgs e)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+
             if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 buttonDown.BackColor = Color.Firebrick;
+                Requesting_Down.Image = Properties.Resources.Down_Light;
                 ding.Play();
                 synthesizer.Speak("Going Down.");
 
@@ -72,7 +79,7 @@ namespace MovingImage
                 {
 
                     Timer_Close_First_Floor.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Down;
 
@@ -80,7 +87,7 @@ namespace MovingImage
                 else
                 {
                     TimerDown.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Down;
 
@@ -94,6 +101,8 @@ namespace MovingImage
 
         public void ButtonOpen(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox First_Floor_Door, Button buttonOpen, Timer TimerOpen, DataGridView dgvLogData, object sender, EventArgs e )
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 if (Ground_Floor_Door.Size.Width == 0)
@@ -110,7 +119,7 @@ namespace MovingImage
                     open.Play();
 
                     TimerOpen.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                 }
             }
@@ -130,7 +139,7 @@ namespace MovingImage
                     open.Play();
 
                     TimerOpen.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                 }
             }
@@ -138,6 +147,8 @@ namespace MovingImage
 
         public void ButtonClose(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox First_Floor_Door, Button buttonClose, Timer TimerClose, DataGridView dgvLogData, object sender, EventArgs e)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 if (Ground_Floor_Door.Size.Width == 210)
@@ -152,7 +163,7 @@ namespace MovingImage
                     close.Play();
 
                     TimerClose.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
 
                 }
@@ -171,7 +182,7 @@ namespace MovingImage
                     close.Play();
 
                     TimerClose.Enabled = true;
-                    db.InsertData(sender, e);
+                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
 
                 }
@@ -180,6 +191,7 @@ namespace MovingImage
 
         public void Show_Logs(DataGridView dgvLogData, Button buttonShowLogs, Button buttonHideLogs, Button buttonClearLogs)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
             dgvLogData.Visible = true;
             db.Select(dgvLogData);
             buttonShowLogs.Enabled = false;
@@ -189,6 +201,7 @@ namespace MovingImage
 
         public void Hide_Logs(DataGridView dgvLogData, Button buttonShowLogs, Button buttonHideLogs, Button buttonClearLogs)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
             dgvLogData.Visible = false;
             buttonHideLogs.Enabled = false;
             buttonShowLogs.Enabled = true;
@@ -197,6 +210,7 @@ namespace MovingImage
 
         public void Clear_Logs(DataGridView dgvLogData, Button buttonShowLogs, Button buttonHideLogs, Button buttonClearLogs)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
             db.Delete_Logs();
             db.Select(dgvLogData);
             buttonClearLogs.Enabled = false;

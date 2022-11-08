@@ -13,22 +13,20 @@ namespace MovingImage
     internal class Timers
     {
         
-        int lift_interior_ground_location = 978;
-        int lift_interior_first_location = 96;
+        int lift_interior_ground_location = 1098;
+        int lift_interior_first_location = 280;
         int dX = 2;
         int dY = 2;
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-        
-        /*System.Media.SoundPlayer ding = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Elevator_Ding.wav");
-        System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
-        System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");*/
+       
 
         
 
 
-        public void TimerUp(PictureBox Lift_Interior, PictureBox DisplayBox, Timer TimerUp, Timer TimerOpen, Button buttonUp)
+        public void TimerUp(PictureBox Lift_Interior, PictureBox DisplayBox, Button Requesting_Up,PictureBox DisplayBox_Ground_Floor,PictureBox DisplayBox_First_Floor, Timer TimerUp, Timer TimerOpen, Button buttonUp)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+
             Lift_Interior.Location = new Point(Lift_Interior.Location.X, Lift_Interior.Location.Y - (dY));
             TimerUp.Enabled = true;
             
@@ -37,21 +35,34 @@ namespace MovingImage
                 TimerUp.Enabled = false;
                 TimerOpen.Enabled = true;
                 buttonUp.BackColor = Color.Gray;
+                
                 Thread.Sleep(200);
 
                 synthesizer.Speak("You have reached First Floor.");
+
+                Requesting_Up.Image = Properties.Resources.Up;
+
                 DisplayBox.Image = Properties.Resources.First_Floor;
                 DisplayBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                DisplayBox_Ground_Floor.Image = Properties.Resources.First_Floor_Small;
+                DisplayBox_Ground_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
 
+                DisplayBox_First_Floor.Image = Properties.Resources.First_Floor_Small;
+                DisplayBox_First_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
 
                 
+
+
+
+
                 // Select();
             }
         }
 
-        public void TimerDown(PictureBox Lift_Interior, PictureBox DisplayBox, Timer TimerDown, Timer TimerOpen, Button buttonDown)
+        public void TimerDown(PictureBox Lift_Interior, PictureBox DisplayBox,Button Requesting_Down, PictureBox DisplayBox_First_Floor, PictureBox DisplayBox_Ground_Floor, Timer TimerDown, Timer TimerOpen, Button buttonDown)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+
             Lift_Interior.Location = new Point(Lift_Interior.Location.X, Lift_Interior.Location.Y + (dY));
             TimerDown.Enabled = true;
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
@@ -59,10 +70,19 @@ namespace MovingImage
                 TimerDown.Enabled = false;
                 TimerOpen.Enabled = true;
                 buttonDown.BackColor = Color.Gray;
+                
                 Thread.Sleep(200);
                 synthesizer.Speak("You have reached Ground Floor.");
                 DisplayBox.Image = Properties.Resources.Ground_Floor;
                 DisplayBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                DisplayBox_First_Floor.Image = Properties.Resources.First_Floor_Small;
+                DisplayBox_First_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                DisplayBox_Ground_Floor.Image = Properties.Resources.First_Floor_Small;
+                DisplayBox_Ground_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                Requesting_Down.Image = Properties.Resources.Down;
+
 
                 //Select();
             }
@@ -122,6 +142,8 @@ namespace MovingImage
 
         public void TimerFirstFloorClose(PictureBox Lift_Interior, PictureBox First_Floor_Door, Timer Timer_Close_First_Floor, Timer TimerDown, Button buttonDown)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+
             if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width + 1, First_Floor_Door.Size.Height);
@@ -143,6 +165,8 @@ namespace MovingImage
 
         public void TimerGroundFloorClose(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, Timer Timer_Close_Ground_Floor, Timer TimerUp, Button buttonUp)
         {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
                 Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width + 1, Ground_Floor_Door.Size.Height);
@@ -153,6 +177,10 @@ namespace MovingImage
                     TimerUp.Enabled = true;
                     buttonUp.BackColor = Color.Gray;
 
+                    
+                }
+                if(Lift_Interior.Location.Y == lift_interior_first_location)
+                {
                     synthesizer.Speak("You have reached First Floor.");
                 }
             }

@@ -44,29 +44,34 @@
             this.Timer_Close_First_Floor = new System.Windows.Forms.Timer(this.components);
             this.Timer_Close_Ground_Floor = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dgvLogData = new System.Windows.Forms.DataGridView();
             this.buttonShowLogs = new System.Windows.Forms.Button();
             this.buttonClearLogs = new System.Windows.Forms.Button();
             this.buttonHideLogs = new System.Windows.Forms.Button();
             this.DisplayBox = new System.Windows.Forms.PictureBox();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.DisplayBox_First_Floor = new System.Windows.Forms.PictureBox();
+            this.DisplayBox_Ground_Floor = new System.Windows.Forms.PictureBox();
+            this.Requesting_Up = new System.Windows.Forms.Button();
+            this.Requesting_Down = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Lift_Interior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_Floor_Door)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.First_Floor_Door)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLogData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayBox_First_Floor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayBox_Ground_Floor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // Lift_Interior
             // 
             this.Lift_Interior.BackColor = System.Drawing.Color.Transparent;
             this.Lift_Interior.Image = ((System.Drawing.Image)(resources.GetObject("Lift_Interior.Image")));
-            this.Lift_Interior.Location = new System.Drawing.Point(216, 978);
+            this.Lift_Interior.Location = new System.Drawing.Point(310, 1098);
             this.Lift_Interior.Margin = new System.Windows.Forms.Padding(4);
             this.Lift_Interior.Name = "Lift_Interior";
             this.Lift_Interior.Size = new System.Drawing.Size(210, 374);
@@ -98,7 +103,7 @@
             // 
             this.buttonUp.BackColor = System.Drawing.Color.Gray;
             this.buttonUp.Image = ((System.Drawing.Image)(resources.GetObject("buttonUp.Image")));
-            this.buttonUp.Location = new System.Drawing.Point(774, 150);
+            this.buttonUp.Location = new System.Drawing.Point(959, 327);
             this.buttonUp.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(145, 144);
@@ -110,7 +115,7 @@
             // 
             this.buttonDown.BackColor = System.Drawing.Color.Gray;
             this.buttonDown.Image = ((System.Drawing.Image)(resources.GetObject("buttonDown.Image")));
-            this.buttonDown.Location = new System.Drawing.Point(774, 817);
+            this.buttonDown.Location = new System.Drawing.Point(959, 1034);
             this.buttonDown.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(145, 144);
@@ -122,10 +127,10 @@
             // 
             this.buttonOpen.BackColor = System.Drawing.Color.Gray;
             this.buttonOpen.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpen.Image")));
-            this.buttonOpen.Location = new System.Drawing.Point(875, 978);
+            this.buttonOpen.Location = new System.Drawing.Point(1053, 1195);
             this.buttonOpen.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(145, 144);
+            this.buttonOpen.Size = new System.Drawing.Size(140, 144);
             this.buttonOpen.TabIndex = 3;
             this.buttonOpen.UseVisualStyleBackColor = false;
             this.buttonOpen.Click += new System.EventHandler(this.OpenButtonClick);
@@ -134,7 +139,7 @@
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Gray;
             this.buttonClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonClose.Image")));
-            this.buttonClose.Location = new System.Drawing.Point(678, 978);
+            this.buttonClose.Location = new System.Drawing.Point(853, 1195);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(145, 144);
@@ -146,7 +151,7 @@
             // 
             this.Ground_Floor_Door.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Ground_Floor_Door.Image = ((System.Drawing.Image)(resources.GetObject("Ground_Floor_Door.Image")));
-            this.Ground_Floor_Door.Location = new System.Drawing.Point(216, 978);
+            this.Ground_Floor_Door.Location = new System.Drawing.Point(310, 1098);
             this.Ground_Floor_Door.Margin = new System.Windows.Forms.Padding(2);
             this.Ground_Floor_Door.Name = "Ground_Floor_Door";
             this.Ground_Floor_Door.Size = new System.Drawing.Size(210, 374);
@@ -157,7 +162,7 @@
             // First_Floor_Door
             // 
             this.First_Floor_Door.Image = ((System.Drawing.Image)(resources.GetObject("First_Floor_Door.Image")));
-            this.First_Floor_Door.Location = new System.Drawing.Point(216, 96);
+            this.First_Floor_Door.Location = new System.Drawing.Point(310, 280);
             this.First_Floor_Door.Margin = new System.Windows.Forms.Padding(2);
             this.First_Floor_Door.Name = "First_Floor_Door";
             this.First_Floor_Door.Size = new System.Drawing.Size(210, 380);
@@ -180,31 +185,21 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(165, 935);
+            this.pictureBox1.Location = new System.Drawing.Point(255, 1049);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(313, 471);
+            this.pictureBox1.Size = new System.Drawing.Size(300, 458);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(165, 49);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(313, 454);
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Gray;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(629, 49);
+            this.pictureBox3.Location = new System.Drawing.Point(803, 179);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(451, 1357);
+            this.pictureBox3.Size = new System.Drawing.Size(451, 1241);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
@@ -218,19 +213,19 @@
             this.dgvLogData.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvLogData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLogData.Location = new System.Drawing.Point(1139, 161);
+            this.dgvLogData.Location = new System.Drawing.Point(1301, 179);
             this.dgvLogData.MultiSelect = false;
             this.dgvLogData.Name = "dgvLogData";
             this.dgvLogData.ReadOnly = true;
             this.dgvLogData.RowHeadersWidth = 62;
             this.dgvLogData.RowTemplate.Height = 33;
             this.dgvLogData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLogData.Size = new System.Drawing.Size(995, 619);
+            this.dgvLogData.Size = new System.Drawing.Size(969, 700);
             this.dgvLogData.TabIndex = 11;
             // 
             // buttonShowLogs
             // 
-            this.buttonShowLogs.Location = new System.Drawing.Point(1687, 786);
+            this.buttonShowLogs.Location = new System.Drawing.Point(1837, 913);
             this.buttonShowLogs.Name = "buttonShowLogs";
             this.buttonShowLogs.Size = new System.Drawing.Size(125, 34);
             this.buttonShowLogs.TabIndex = 12;
@@ -241,7 +236,7 @@
             // buttonClearLogs
             // 
             this.buttonClearLogs.Enabled = false;
-            this.buttonClearLogs.Location = new System.Drawing.Point(1949, 786);
+            this.buttonClearLogs.Location = new System.Drawing.Point(2145, 913);
             this.buttonClearLogs.Name = "buttonClearLogs";
             this.buttonClearLogs.Size = new System.Drawing.Size(125, 34);
             this.buttonClearLogs.TabIndex = 13;
@@ -252,7 +247,7 @@
             // buttonHideLogs
             // 
             this.buttonHideLogs.Enabled = false;
-            this.buttonHideLogs.Location = new System.Drawing.Point(1818, 786);
+            this.buttonHideLogs.Location = new System.Drawing.Point(1994, 913);
             this.buttonHideLogs.Name = "buttonHideLogs";
             this.buttonHideLogs.Size = new System.Drawing.Size(125, 34);
             this.buttonHideLogs.TabIndex = 14;
@@ -263,26 +258,78 @@
             // DisplayBox
             // 
             this.DisplayBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DisplayBox.Location = new System.Drawing.Point(722, 329);
+            this.DisplayBox.Image = global::MovingImage.Properties.Resources.Ground_Floor;
+            this.DisplayBox.Location = new System.Drawing.Point(910, 536);
             this.DisplayBox.Name = "DisplayBox";
             this.DisplayBox.Size = new System.Drawing.Size(253, 451);
+            this.DisplayBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DisplayBox.TabIndex = 15;
             this.DisplayBox.TabStop = false;
             // 
-            // backgroundWorker
+            // DisplayBox_First_Floor
             // 
-            this.backgroundWorker.WorkerReportsProgress = true;
-            this.backgroundWorker.WorkerSupportsCancellation = true;
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            this.DisplayBox_First_Floor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DisplayBox_First_Floor.Location = new System.Drawing.Point(381, 134);
+            this.DisplayBox_First_Floor.Name = "DisplayBox_First_Floor";
+            this.DisplayBox_First_Floor.Size = new System.Drawing.Size(80, 89);
+            this.DisplayBox_First_Floor.TabIndex = 16;
+            this.DisplayBox_First_Floor.TabStop = false;
+            // 
+            // DisplayBox_Ground_Floor
+            // 
+            this.DisplayBox_Ground_Floor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DisplayBox_Ground_Floor.Image = global::MovingImage.Properties.Resources.Ground_Floor_Small;
+            this.DisplayBox_Ground_Floor.Location = new System.Drawing.Point(381, 955);
+            this.DisplayBox_Ground_Floor.Name = "DisplayBox_Ground_Floor";
+            this.DisplayBox_Ground_Floor.Size = new System.Drawing.Size(80, 89);
+            this.DisplayBox_Ground_Floor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.DisplayBox_Ground_Floor.TabIndex = 17;
+            this.DisplayBox_Ground_Floor.TabStop = false;
+            // 
+            // Requesting_Up
+            // 
+            this.Requesting_Up.Image = global::MovingImage.Properties.Resources.Up;
+            this.Requesting_Up.Location = new System.Drawing.Point(586, 1258);
+            this.Requesting_Up.Name = "Requesting_Up";
+            this.Requesting_Up.Size = new System.Drawing.Size(82, 81);
+            this.Requesting_Up.TabIndex = 18;
+            this.Requesting_Up.UseVisualStyleBackColor = false;
+            this.Requesting_Up.Click += new System.EventHandler(this.Requesting_Up_Click);
+            // 
+            // Requesting_Down
+            // 
+            this.Requesting_Down.Image = global::MovingImage.Properties.Resources.Down;
+            this.Requesting_Down.Location = new System.Drawing.Point(586, 450);
+            this.Requesting_Down.Name = "Requesting_Down";
+            this.Requesting_Down.Size = new System.Drawing.Size(82, 83);
+            this.Requesting_Down.TabIndex = 19;
+            this.Requesting_Down.UseVisualStyleBackColor = true;
+            this.Requesting_Down.Click += new System.EventHandler(this.Requesting_Down_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(255, 227);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(300, 458);
+            this.pictureBox4.TabIndex = 20;
+            this.pictureBox4.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(2211, 1256);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(2370, 1552);
+            this.Controls.Add(this.Requesting_Down);
+            this.Controls.Add(this.Requesting_Up);
+            this.Controls.Add(this.DisplayBox_Ground_Floor);
+            this.Controls.Add(this.DisplayBox_First_Floor);
             this.Controls.Add(this.DisplayBox);
             this.Controls.Add(this.buttonHideLogs);
             this.Controls.Add(this.buttonClearLogs);
@@ -296,8 +343,9 @@
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonUp);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox4);
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
@@ -307,10 +355,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ground_Floor_Door)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.First_Floor_Door)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLogData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayBox_First_Floor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayBox_Ground_Floor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -331,13 +381,16 @@
         private System.Windows.Forms.Timer Timer_Close_First_Floor;
         private System.Windows.Forms.Timer Timer_Close_Ground_Floor;
         private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private DataGridView dgvLogData;
         private Button buttonShowLogs;
         private Button buttonClearLogs;
         private Button buttonHideLogs;
         private PictureBox DisplayBox;
-        private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private PictureBox DisplayBox_First_Floor;
+        private PictureBox DisplayBox_Ground_Floor;
+        private Button Requesting_Up;
+        private Button Requesting_Down;
+        private PictureBox pictureBox4;
     }
 }

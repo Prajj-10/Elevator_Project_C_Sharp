@@ -10,8 +10,8 @@ namespace MovingImage
     internal class Button_Functions 
     {
 
-        int lift_interior_ground_location = 978;
-        int lift_interior_first_location = 96;
+        int lift_interior_ground_location = 1098;
+        int lift_interior_first_location = 280;
         public string ButtonClicked(object sender, EventArgs e)
         {
             Button clicked = (Button)sender;
@@ -28,10 +28,17 @@ namespace MovingImage
             {
                 return "Open";
             }
-            else
+            else if (clicked.Name == "buttonClose")
             {
                 return "Close";
             }
+            else if (clicked.Name == "Requesting_Up")
+                return "Requesting Up";
+            else
+            {
+                return "Requesting Down";
+            }
+
 
         }
 
@@ -89,8 +96,31 @@ namespace MovingImage
                     {
                         return "Invalid Error";
                     }
+                case "Requesting_Up":
+                    if (TimerUp.Enabled || Timer_Close_Ground_Floor.Enabled)
+                    {
+                        return "Requesting Lift from Ground Floor";
+
+                    }
+                    else
+                    {
+                        return "Invalid Error";
+                    }
+
+                case "Requesting_Down":
+                    if (TimerDown.Enabled || Timer_Close_First_Floor.Enabled)
+                    {
+                        return "Requesting Lift from First Floor";
+                    }
+                    else
+                    {
+                        return "Invalid Error";
+                    }
                 default: return "Invalid Error";
             }
         }
+
+       
+
     }
 }
