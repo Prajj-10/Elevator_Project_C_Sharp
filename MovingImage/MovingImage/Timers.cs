@@ -18,9 +18,11 @@ namespace MovingImage
         int dX = 2;
         int dY = 2;
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-       
 
-        
+        System.Media.SoundPlayer ding = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Elevator_Ding.wav");
+        System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
+        System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
+
 
 
         public void TimerUp(PictureBox Lift_Interior, PictureBox DisplayBox, Button Requesting_Up,PictureBox DisplayBox_Ground_Floor,PictureBox DisplayBox_First_Floor, Timer TimerUp, Timer TimerOpen, Button buttonUp)
@@ -39,6 +41,7 @@ namespace MovingImage
                 Thread.Sleep(200);
 
                 synthesizer.Speak("You have reached First Floor.");
+                open.Play();
 
                 Requesting_Up.Image = Properties.Resources.Up;
 
@@ -71,8 +74,10 @@ namespace MovingImage
                 TimerOpen.Enabled = true;
                 buttonDown.BackColor = Color.Gray;
                 
-                Thread.Sleep(200);
+                
                 synthesizer.Speak("You have reached Ground Floor.");
+                Thread.Sleep(200);
+                open.Play();
                 DisplayBox.Image = Properties.Resources.Ground_Floor;
                 DisplayBox.SizeMode = PictureBoxSizeMode.CenterImage;
                 DisplayBox_First_Floor.Image = Properties.Resources.First_Floor_Small;
@@ -146,6 +151,7 @@ namespace MovingImage
 
             if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
+                
                 First_Floor_Door.Size = new Size(First_Floor_Door.Size.Width + 1, First_Floor_Door.Size.Height);
                 Timer_Close_First_Floor.Enabled = true;
                 if (First_Floor_Door.Size.Width == 210)
@@ -159,6 +165,7 @@ namespace MovingImage
                 if (Lift_Interior.Location.Y == lift_interior_ground_location)
                 {
                     synthesizer.Speak("You have reached Ground Floor.");
+                    open.Play();
                 }
             }
         }
@@ -169,6 +176,7 @@ namespace MovingImage
 
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
+                
                 Ground_Floor_Door.Size = new Size(Ground_Floor_Door.Size.Width + 1, Ground_Floor_Door.Size.Height);
                 Timer_Close_Ground_Floor.Enabled = true;
                 if (Ground_Floor_Door.Size.Width == 210)
@@ -182,6 +190,7 @@ namespace MovingImage
                 if(Lift_Interior.Location.Y == lift_interior_first_location)
                 {
                     synthesizer.Speak("You have reached First Floor.");
+                    open.Play();
                 }
             }
         }

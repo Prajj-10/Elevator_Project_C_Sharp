@@ -38,6 +38,7 @@ namespace MovingImage
                 if (Ground_Floor_Door.Size.Width == 0)
                 {
                     Timer_Close_Ground_Floor.Enabled = true;
+                    close.Play();
                     // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Up;
@@ -77,8 +78,9 @@ namespace MovingImage
 
                 if (First_Floor_Door.Size.Width == 0)
                 {
-
+                    close.Play();
                     Timer_Close_First_Floor.Enabled = true;
+                    
                     // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Down;
