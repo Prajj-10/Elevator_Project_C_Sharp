@@ -59,6 +59,7 @@
             this.Requesting_Up = new System.Windows.Forms.Button();
             this.Requesting_Down = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.Timer_Requesting_Up = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Lift_Interior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_Floor_Door)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.First_Floor_Door)).BeginInit();
@@ -301,9 +302,11 @@
             // DisplayBox_First_Floor
             // 
             this.DisplayBox_First_Floor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DisplayBox_First_Floor.Image = global::MovingImage.Properties.Resources.Ground_Floor_Small;
             this.DisplayBox_First_Floor.Location = new System.Drawing.Point(381, 134);
             this.DisplayBox_First_Floor.Name = "DisplayBox_First_Floor";
             this.DisplayBox_First_Floor.Size = new System.Drawing.Size(80, 89);
+            this.DisplayBox_First_Floor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DisplayBox_First_Floor.TabIndex = 16;
             this.DisplayBox_First_Floor.TabStop = false;
             // 
@@ -424,5 +427,6 @@
         private Button Requesting_Up;
         private Button Requesting_Down;
         private PictureBox pictureBox4;
+        private System.Windows.Forms.Timer Timer_Requesting_Up;
     }
 }

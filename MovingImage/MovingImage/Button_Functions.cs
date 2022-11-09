@@ -33,10 +33,10 @@ namespace MovingImage
                 return "Close";
             }
             else if (clicked.Name == "Requesting_Up")
-                return "Requesting Up";
+                return "Requesting Down";
             else
             {
-                return "Requesting Down";
+                return "Requesting Up";
             }
 
 
@@ -97,7 +97,7 @@ namespace MovingImage
                         return "Invalid Error";
                     }
                 case "Requesting_Up":
-                    if (TimerUp.Enabled || Timer_Close_Ground_Floor.Enabled)
+                    if (TimerDown.Enabled || Timer_Close_First_Floor.Enabled)
                     {
                         return "Requesting Lift from Ground Floor";
 
@@ -108,7 +108,7 @@ namespace MovingImage
                     }
 
                 case "Requesting_Down":
-                    if (TimerDown.Enabled || Timer_Close_First_Floor.Enabled)
+                    if (TimerUp.Enabled || Timer_Close_Ground_Floor.Enabled )
                     {
                         return "Requesting Lift from First Floor";
                     }

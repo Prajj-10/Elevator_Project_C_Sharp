@@ -23,7 +23,7 @@ namespace MovingImage
         System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
         System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
 
-        public void ButtonUp(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox DisplayBox, Button buttonUp,Button Requesting_Up, Timer Timer_Close_Ground_Floor, Timer TimerUp, DataGridView dgvLogData, object sender, EventArgs e)
+        public void ButtonUp(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox DisplayBox, Button buttonUp,Button Requesting_Down, Timer Timer_Close_Ground_Floor, Timer TimerUp, DataGridView dgvLogData, object sender, EventArgs e)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
 
@@ -31,7 +31,7 @@ namespace MovingImage
             {
                 
                 buttonUp.BackColor = Color.Firebrick;
-                Requesting_Up.Image = Properties.Resources.Up_Light;
+                Requesting_Down.Image = Properties.Resources.Down_Light;
                 ding.Play();
                 synthesizer.Speak("Going Up.");
 
@@ -59,19 +59,19 @@ namespace MovingImage
             }
             else
             {
-                synthesizer.Speak("You are alredy at First Floor. ");
+                synthesizer.Speak("You are already at First Floor. ");
             }
 
         }
 
-        public void ButtonDown(PictureBox Lift_Interior, PictureBox First_Floor_Door, PictureBox DisplayBox,Button buttonDown, Button Requesting_Down, Timer TimerDown, Timer Timer_Close_First_Floor, DataGridView dgvLogData, object sender, EventArgs e)
+        public void ButtonDown(PictureBox Lift_Interior, PictureBox First_Floor_Door, PictureBox DisplayBox,Button buttonDown, Button Requesting_Up, Timer TimerDown, Timer Timer_Close_First_Floor, DataGridView dgvLogData, object sender, EventArgs e)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
 
             if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
                 buttonDown.BackColor = Color.Firebrick;
-                Requesting_Down.Image = Properties.Resources.Down_Light;
+                Requesting_Up.Image = Properties.Resources.Up_Light;
                 ding.Play();
                 synthesizer.Speak("Going Down.");
 
@@ -190,6 +190,46 @@ namespace MovingImage
                 }
             }
         }
+
+     /*   public void RequestingUp(PictureBox Lift_Interior, Button Requesting_Up, Timer timerOpen, PictureBox Ground_Floor_Door, Timer Timer_Close_First_Floor, DataGridView dgvLogData, PictureBox DisplayBox, Timer TimerDown)
+        {
+            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
+            if (Lift_Interior.Location.Y == lift_interior_first_location)
+            {
+
+                // buttonUp.BackColor = Color.Firebrick;
+                Requesting_Up.Image = Properties.Resources.Down_Light;
+                // ding.Play();
+                synthesizer.Speak("You are already at First Floor");
+                timerOpen.Enabled = true;
+
+                if (Ground_Floor_Door.Size.Width == 0)
+                {
+                    Timer_Close_First_Floor.Enabled = true;
+                    close.Play();
+                    // db.InsertData(sender, e);
+                    db.Select(dgvLogData);
+                    DisplayBox.Image = Properties.Resources.Arrow_Down;
+
+
+
+                }
+                else
+                {
+
+                    TimerDown.Enabled = true;
+                    // db.InsertData(sender, e);
+                    db.Select(dgvLogData); ;
+                    DisplayBox.Image = Properties.Resources.Arrow_Down;
+
+
+                }
+            }
+            else
+            {
+                synthesizer.Speak("You are alredy at Ground Floor. ");
+            }
+        }*/
 
         public void Show_Logs(DataGridView dgvLogData, Button buttonShowLogs, Button buttonHideLogs, Button buttonClearLogs)
         {

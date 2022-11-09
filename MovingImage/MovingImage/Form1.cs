@@ -56,7 +56,7 @@ namespace MovingImage
         public void UpButtonClick(object sender, EventArgs e)
         {
 
-            btn.ButtonUp(Lift_Interior, Ground_Floor_Door, DisplayBox, buttonUp, Requesting_Up, Timer_Close_Ground_Floor, TimerUp, dgvLogData, sender, e);
+            btn.ButtonUp(Lift_Interior, Ground_Floor_Door, DisplayBox, buttonUp, Requesting_Down, Timer_Close_Ground_Floor, TimerUp, dgvLogData, sender, e);
             InsertData(sender, e);
             db.Select(dgvLogData);
 
@@ -67,7 +67,7 @@ namespace MovingImage
         private void DownButtonClick(object sender, EventArgs e)
         {
 
-            btn.ButtonDown(Lift_Interior, First_Floor_Door, DisplayBox, buttonDown, Requesting_Down, TimerDown, Timer_Close_First_Floor, dgvLogData, sender, e);
+            btn.ButtonDown(Lift_Interior, First_Floor_Door, DisplayBox, buttonDown, Requesting_Up, TimerDown, Timer_Close_First_Floor, dgvLogData, sender, e);
             InsertData(sender, e);
             db.Select(dgvLogData);
 
@@ -93,7 +93,7 @@ namespace MovingImage
         }
         private void TimerUp_Tick(object sender, EventArgs e)
         {
-            tm.TimerUp(Lift_Interior, DisplayBox, Requesting_Up, DisplayBox_Ground_Floor, DisplayBox_First_Floor, TimerUp, TimerOpen, buttonUp);
+            tm.TimerUp(Lift_Interior, DisplayBox, Requesting_Down, DisplayBox_Ground_Floor, DisplayBox_First_Floor, TimerUp, TimerOpen, buttonUp);
         }
 
         private void TimerDown_Tick(object sender, EventArgs e)
@@ -112,12 +112,12 @@ namespace MovingImage
 
         private void Timer_Close_1F_Tick(object sender, EventArgs e)
         {
-            tm.TimerFirstFloorClose(Lift_Interior, First_Floor_Door, Timer_Close_First_Floor, TimerDown, buttonDown);
+            tm.TimerFirstFloorClose(Lift_Interior, First_Floor_Door, Timer_Close_First_Floor, TimerDown, buttonDown, Requesting_Up, DisplayBox_Ground_Floor, DisplayBox_First_Floor);
         }
 
         private void Timer_Close_Ground_Floor_Tick(object sender, EventArgs e)
         {
-            tm.TimerGroundFloorClose(Lift_Interior, Ground_Floor_Door, Timer_Close_Ground_Floor, TimerUp, buttonUp);
+            tm.TimerGroundFloorClose(Lift_Interior, Ground_Floor_Door, Timer_Close_Ground_Floor, TimerUp, buttonUp, Requesting_Down);
 
         }
 
@@ -177,24 +177,26 @@ namespace MovingImage
         private void Requesting_Up_Click(object sender, EventArgs e)
         {
             // Requesting_Up.Image = Properties.Resources.Up_Light;
-            btn.ButtonUp(Lift_Interior, Ground_Floor_Door, DisplayBox, buttonUp, Requesting_Up, Timer_Close_Ground_Floor, TimerUp, dgvLogData, sender, e);
+            
+
+            btn.ButtonDown(Lift_Interior, First_Floor_Door, DisplayBox, buttonDown, Requesting_Up, TimerDown, Timer_Close_First_Floor, dgvLogData, sender, e);
             InsertData(sender, e);
             db.Select(dgvLogData);
 
-           /* DisplayBox_Ground_Floor.Image = Properties.Resources.First_Floor_Small;
-            DisplayBox_Ground_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
+            /* DisplayBox_Ground_Floor.Image = Properties.Resources.First_Floor_Small;
+             DisplayBox_Ground_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
 
-            DisplayBox_First_Floor.Image = Properties.Resources.First_Floor_Small;
-            DisplayBox_First_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
+             DisplayBox_First_Floor.Image = Properties.Resources.First_Floor_Small;
+             DisplayBox_First_Floor.SizeMode = PictureBoxSizeMode.CenterImage;
 
-            Requesting_Up.Image = Properties.Resources.Up;*/
+             Requesting_Up.Image = Properties.Resources.Up;*/
 
         }
 
         private void Requesting_Down_Click(object sender, EventArgs e)
         {
             // Requesting_Down.Image = Properties.Resources.Down_Light;
-            btn.ButtonDown(Lift_Interior, First_Floor_Door, DisplayBox, buttonDown, Requesting_Down, TimerDown, Timer_Close_First_Floor, dgvLogData, sender, e);
+            btn.ButtonUp(Lift_Interior, Ground_Floor_Door, DisplayBox, buttonUp, Requesting_Down, Timer_Close_Ground_Floor, TimerUp, dgvLogData, sender, e);
             InsertData(sender, e);
             db.Select(dgvLogData);
 
