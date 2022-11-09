@@ -225,14 +225,15 @@
             this.dgvLogData.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvLogData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLogData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLogData.EnableHeadersVisualStyles = false;
             this.dgvLogData.Location = new System.Drawing.Point(1301, 179);
             this.dgvLogData.MultiSelect = false;
             this.dgvLogData.Name = "dgvLogData";
@@ -258,34 +259,46 @@
             // 
             // buttonShowLogs
             // 
-            this.buttonShowLogs.Location = new System.Drawing.Point(1837, 913);
+            this.buttonShowLogs.BackColor = System.Drawing.Color.LightCoral;
+            this.buttonShowLogs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonShowLogs.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonShowLogs.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.buttonShowLogs.Location = new System.Drawing.Point(1888, 913);
             this.buttonShowLogs.Name = "buttonShowLogs";
-            this.buttonShowLogs.Size = new System.Drawing.Size(125, 34);
+            this.buttonShowLogs.Size = new System.Drawing.Size(156, 74);
             this.buttonShowLogs.TabIndex = 12;
             this.buttonShowLogs.Text = "Show Logs";
-            this.buttonShowLogs.UseVisualStyleBackColor = true;
+            this.buttonShowLogs.UseVisualStyleBackColor = false;
             this.buttonShowLogs.Click += new System.EventHandler(this.buttonShowLogs_Click);
             // 
             // buttonClearLogs
             // 
+            this.buttonClearLogs.BackColor = System.Drawing.Color.LightCoral;
             this.buttonClearLogs.Enabled = false;
-            this.buttonClearLogs.Location = new System.Drawing.Point(2145, 913);
+            this.buttonClearLogs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonClearLogs.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonClearLogs.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.buttonClearLogs.Location = new System.Drawing.Point(2265, 913);
             this.buttonClearLogs.Name = "buttonClearLogs";
-            this.buttonClearLogs.Size = new System.Drawing.Size(125, 34);
+            this.buttonClearLogs.Size = new System.Drawing.Size(152, 74);
             this.buttonClearLogs.TabIndex = 13;
             this.buttonClearLogs.Text = "Clear Logs";
-            this.buttonClearLogs.UseVisualStyleBackColor = true;
+            this.buttonClearLogs.UseVisualStyleBackColor = false;
             this.buttonClearLogs.Click += new System.EventHandler(this.buttonClearLogs_Click);
             // 
             // buttonHideLogs
             // 
+            this.buttonHideLogs.BackColor = System.Drawing.Color.LightCoral;
             this.buttonHideLogs.Enabled = false;
-            this.buttonHideLogs.Location = new System.Drawing.Point(1994, 913);
+            this.buttonHideLogs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonHideLogs.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonHideLogs.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.buttonHideLogs.Location = new System.Drawing.Point(2081, 913);
             this.buttonHideLogs.Name = "buttonHideLogs";
-            this.buttonHideLogs.Size = new System.Drawing.Size(125, 34);
+            this.buttonHideLogs.Size = new System.Drawing.Size(149, 74);
             this.buttonHideLogs.TabIndex = 14;
             this.buttonHideLogs.Text = "Hide Logs";
-            this.buttonHideLogs.UseVisualStyleBackColor = true;
+            this.buttonHideLogs.UseVisualStyleBackColor = false;
             this.buttonHideLogs.Click += new System.EventHandler(this.buttonHideLogs_Click);
             // 
             // DisplayBox

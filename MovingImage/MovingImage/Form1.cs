@@ -7,6 +7,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Threading;
 using System.Reflection.Metadata.Ecma335;
+using System.Windows.Forms;
 
 namespace MovingImage
 {
@@ -48,7 +49,8 @@ namespace MovingImage
             InitializeComponent();
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
             dgvLogData.Visible = false;
-           
+            dgvLogData.DefaultCellStyle.SelectionBackColor = dgvLogData.DefaultCellStyle.BackColor;
+            dgvLogData.DefaultCellStyle.SelectionForeColor = dgvLogData.DefaultCellStyle.ForeColor;
 
         }
         
@@ -130,6 +132,7 @@ namespace MovingImage
             this.Location = new Point(0, 0);
             this.Size = new Size(w, h);
             // Select();
+            
 
         }
 
