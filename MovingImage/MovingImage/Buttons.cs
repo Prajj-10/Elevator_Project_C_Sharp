@@ -11,13 +11,19 @@ namespace MovingImage
 {
     internal class Buttons
     {
+        // Lift Interior Coordinates
         int lift_interior_ground_location = 1098;
         int lift_interior_first_location = 280;
-        int dX = 2;
-        int dY = 2;
+
+        // Speech Synthesizer 
+
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 
+        // Database Connection class object created
+
         Database_Connection db = new Database_Connection();
+
+        // Default Sounds for Opening, Closing and Ding sounds
 
         System.Media.SoundPlayer ding = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Elevator_Ding.wav");
         System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
@@ -25,21 +31,22 @@ namespace MovingImage
 
         public void ButtonUp(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox DisplayBox, Button buttonUp,Button Requesting_Down, Timer Timer_Close_Ground_Floor, Timer TimerUp, DataGridView dgvLogData, object sender, EventArgs e)
         {
+            // Synthesizer Settings 
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
 
             if (Lift_Interior.Location.Y == lift_interior_ground_location)
             {
-                
+                // Changes the colour of Buttons
                 buttonUp.BackColor = Color.Firebrick;
                 Requesting_Down.Image = Properties.Resources.Down_Light;
                 ding.Play();
                 synthesizer.Speak("Going Up.");
-
+                // If the door is not closed
                 if (Ground_Floor_Door.Size.Width == 0)
                 {
                     Timer_Close_Ground_Floor.Enabled = true;
                     close.Play();
-                    // db.InsertData(sender, e);
+                  
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Up;
                     
@@ -48,9 +55,9 @@ namespace MovingImage
                 }
                 else
                 {
-
+                    // if the door is closed
                     TimerUp.Enabled = true;
-                    // db.InsertData(sender, e);
+                  
                     db.Select(dgvLogData); ;
                     DisplayBox.Image = Properties.Resources.Arrow_Up;
 
@@ -63,33 +70,36 @@ namespace MovingImage
             }
 
         }
-
+        // Button Function for Lift going down
         public void ButtonDown(PictureBox Lift_Interior, PictureBox First_Floor_Door, PictureBox DisplayBox,Button buttonDown, Button Requesting_Up, Timer TimerDown, Timer Timer_Close_First_Floor, DataGridView dgvLogData, object sender, EventArgs e)
         {
+            // Synthesizer Settings 
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
 
             if (Lift_Interior.Location.Y == lift_interior_first_location)
             {
+                // Changes the colour of Buttons
                 buttonDown.BackColor = Color.Firebrick;
                 Requesting_Up.Image = Properties.Resources.Up_Light;
                 ding.Play();
                 synthesizer.Speak("Going Down.");
 
-
+                // If the door is not closed
                 if (First_Floor_Door.Size.Width == 0)
                 {
                     close.Play();
                     Timer_Close_First_Floor.Enabled = true;
+
                     
-                    // db.InsertData(sender, e);
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Down;
 
                 }
                 else
                 {
+                    // if the door is closed
                     TimerDown.Enabled = true;
-                    // db.InsertData(sender, e);
+                    
                     db.Select(dgvLogData);
                     DisplayBox.Image = Properties.Resources.Arrow_Down;
 
@@ -100,7 +110,7 @@ namespace MovingImage
                 synthesizer.Speak("You are already at Ground Floor.");
             }
         }
-
+        // Open Button 
         public void ButtonOpen(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox First_Floor_Door, Button buttonOpen, Timer TimerOpen, DataGridView dgvLogData, object sender, EventArgs e )
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
@@ -147,6 +157,7 @@ namespace MovingImage
             }
         }
 
+        // Close Button
         public void ButtonClose(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox First_Floor_Door, Button buttonClose, Timer TimerClose, DataGridView dgvLogData, object sender, EventArgs e)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
@@ -191,46 +202,7 @@ namespace MovingImage
             }
         }
 
-     /*   public void RequestingUp(PictureBox Lift_Interior, Button Requesting_Up, Timer timerOpen, PictureBox Ground_Floor_Door, Timer Timer_Close_First_Floor, DataGridView dgvLogData, PictureBox DisplayBox, Timer TimerDown)
-        {
-            synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
-            if (Lift_Interior.Location.Y == lift_interior_first_location)
-            {
-
-                // buttonUp.BackColor = Color.Firebrick;
-                Requesting_Up.Image = Properties.Resources.Down_Light;
-                // ding.Play();
-                synthesizer.Speak("You are already at First Floor");
-                timerOpen.Enabled = true;
-
-                if (Ground_Floor_Door.Size.Width == 0)
-                {
-                    Timer_Close_First_Floor.Enabled = true;
-                    close.Play();
-                    // db.InsertData(sender, e);
-                    db.Select(dgvLogData);
-                    DisplayBox.Image = Properties.Resources.Arrow_Down;
-
-
-
-                }
-                else
-                {
-
-                    TimerDown.Enabled = true;
-                    // db.InsertData(sender, e);
-                    db.Select(dgvLogData); ;
-                    DisplayBox.Image = Properties.Resources.Arrow_Down;
-
-
-                }
-            }
-            else
-            {
-                synthesizer.Speak("You are alredy at Ground Floor. ");
-            }
-        }*/
-
+        // Show Logs Button
         public void Show_Logs(DataGridView dgvLogData, Button buttonShowLogs, Button buttonHideLogs, Button buttonClearLogs)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
@@ -241,6 +213,8 @@ namespace MovingImage
             buttonClearLogs.Enabled = true;
         }
 
+        // Hiding Logs Button
+
         public void Hide_Logs(DataGridView dgvLogData, Button buttonShowLogs, Button buttonHideLogs, Button buttonClearLogs)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
@@ -250,6 +224,7 @@ namespace MovingImage
             buttonClearLogs.Enabled = false;
         }
 
+        // Clear Logs Button
         public void Clear_Logs(DataGridView dgvLogData, Button buttonShowLogs, Button buttonHideLogs, Button buttonClearLogs)
         {
             synthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);

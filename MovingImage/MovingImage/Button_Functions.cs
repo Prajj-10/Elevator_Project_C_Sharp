@@ -9,13 +9,15 @@ namespace MovingImage
 {
     internal class Button_Functions 
     {
-
+        // Lift Interior Coordinates
         int lift_interior_ground_location = 1098;
         int lift_interior_first_location = 280;
         public string ButtonClicked(object sender, EventArgs e)
         {
+            // Brings the value of the clicked button
+
             Button clicked = (Button)sender;
-            // MessageBox.Show(clicked.Text);
+            // If Statements for returning the right vaue.
             if (clicked.Name == "buttonUp")
             {
                 return "Up";
@@ -42,6 +44,7 @@ namespace MovingImage
 
         }
 
+        // Returns the action depending on the button clicked.
         public string ButtonAction(object sender2, EventArgs e2, PictureBox Lift_Interior,Timer TimerUp, Timer Timer_Close_Ground_Floor, Timer TimerDown, Timer Timer_Close_First_Floor, Timer TimerOpen, Timer TimerClose)
         {
             Button clicked = (Button)sender2;

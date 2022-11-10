@@ -10,6 +10,8 @@ namespace MovingImage
 {
     internal class Database_Connection
     {
+
+        // Database Connection Declaration 
         
         private  NpgsqlConnection conn;
         private string? sql;
@@ -20,10 +22,11 @@ namespace MovingImage
             "User Id={2}; Password={3}; Database={4};",
             "localhost", 5432, "postgres", "12345", "elevator_log_db");
 
-        
+        // Select Function 
 
         public void Select(DataGridView dgvLogData)
         {
+            // using try catch to catch exceptions. 
             
             try
             {
@@ -44,6 +47,8 @@ namespace MovingImage
                 MessageBox.Show("Error : " + ex.Message);
             }
         }
+
+        // Deleting Logs
 
         public void Delete_Logs()
         {

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -76,7 +75,7 @@
             // Lift_Interior
             // 
             this.Lift_Interior.BackColor = System.Drawing.Color.Transparent;
-            this.Lift_Interior.Image = ((System.Drawing.Image)(resources.GetObject("Lift_Interior.Image")));
+            this.Lift_Interior.Image = global::MovingImage.Properties.Resources.Lift;
             this.Lift_Interior.Location = new System.Drawing.Point(310, 1098);
             this.Lift_Interior.Margin = new System.Windows.Forms.Padding(4);
             this.Lift_Interior.Name = "Lift_Interior";
@@ -108,7 +107,7 @@
             // buttonUp
             // 
             this.buttonUp.BackColor = System.Drawing.Color.Gray;
-            this.buttonUp.Image = ((System.Drawing.Image)(resources.GetObject("buttonUp.Image")));
+            this.buttonUp.Image = global::MovingImage.Properties.Resources.Button_up;
             this.buttonUp.Location = new System.Drawing.Point(959, 327);
             this.buttonUp.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUp.Name = "buttonUp";
@@ -120,7 +119,7 @@
             // buttonDown
             // 
             this.buttonDown.BackColor = System.Drawing.Color.Gray;
-            this.buttonDown.Image = ((System.Drawing.Image)(resources.GetObject("buttonDown.Image")));
+            this.buttonDown.Image = global::MovingImage.Properties.Resources.Button_Down;
             this.buttonDown.Location = new System.Drawing.Point(959, 1034);
             this.buttonDown.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDown.Name = "buttonDown";
@@ -132,7 +131,7 @@
             // buttonOpen
             // 
             this.buttonOpen.BackColor = System.Drawing.Color.Gray;
-            this.buttonOpen.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpen.Image")));
+            this.buttonOpen.Image = global::MovingImage.Properties.Resources.Button_Open;
             this.buttonOpen.Location = new System.Drawing.Point(1053, 1195);
             this.buttonOpen.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOpen.Name = "buttonOpen";
@@ -144,7 +143,7 @@
             // buttonClose
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Gray;
-            this.buttonClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonClose.Image")));
+            this.buttonClose.Image = global::MovingImage.Properties.Resources.Button_Close;
             this.buttonClose.Location = new System.Drawing.Point(853, 1195);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
@@ -156,7 +155,7 @@
             // Ground_Floor_Door
             // 
             this.Ground_Floor_Door.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Ground_Floor_Door.Image = ((System.Drawing.Image)(resources.GetObject("Ground_Floor_Door.Image")));
+            this.Ground_Floor_Door.Image = global::MovingImage.Properties.Resources.Door;
             this.Ground_Floor_Door.Location = new System.Drawing.Point(310, 1098);
             this.Ground_Floor_Door.Margin = new System.Windows.Forms.Padding(2);
             this.Ground_Floor_Door.Name = "Ground_Floor_Door";
@@ -167,7 +166,7 @@
             // 
             // First_Floor_Door
             // 
-            this.First_Floor_Door.Image = ((System.Drawing.Image)(resources.GetObject("First_Floor_Door.Image")));
+            this.First_Floor_Door.Image = global::MovingImage.Properties.Resources.Door;
             this.First_Floor_Door.Location = new System.Drawing.Point(310, 280);
             this.First_Floor_Door.Margin = new System.Windows.Forms.Padding(2);
             this.First_Floor_Door.Name = "First_Floor_Door";
@@ -190,7 +189,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::MovingImage.Properties.Resources.Door_Frame;
             this.pictureBox1.Location = new System.Drawing.Point(255, 1049);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -201,7 +200,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Image = global::MovingImage.Properties.Resources.Button_BG;
             this.pictureBox3.Location = new System.Drawing.Point(803, 179);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
@@ -367,8 +366,8 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(255, 227);
+            this.pictureBox4.Image = global::MovingImage.Properties.Resources.Door_Frame;
+            this.pictureBox4.Location = new System.Drawing.Point(255, 228);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(300, 458);
@@ -380,7 +379,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::MovingImage.Properties.Resources.Titanium_Textures;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(2529, 1552);
             this.Controls.Add(this.Requesting_Down);
