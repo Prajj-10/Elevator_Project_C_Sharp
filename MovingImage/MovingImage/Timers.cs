@@ -24,9 +24,9 @@ namespace MovingImage
 
         // Sounds for Lift 
 
-        System.Media.SoundPlayer ding = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Elevator_Ding.wav");
-        System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
-        System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
+        System.Media.SoundPlayer ding = new System.Media.SoundPlayer(Properties.Resources.Elevator_Ding);  
+        System.Media.SoundPlayer open = new System.Media.SoundPlayer(Properties.Resources.Open_Sound);     
+        System.Media.SoundPlayer close = new System.Media.SoundPlayer(Properties.Resources.Close_Sound);
 
 
         // Timers 

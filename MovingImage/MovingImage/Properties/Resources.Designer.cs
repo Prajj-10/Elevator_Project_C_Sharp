@@ -131,6 +131,15 @@ namespace MovingImage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Close_Sound {
+            get {
+                return ResourceManager.GetStream("Close_Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Door {
@@ -167,6 +176,15 @@ namespace MovingImage.Properties {
             get {
                 object obj = ResourceManager.GetObject("Down_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Elevator_Ding {
+            get {
+                return ResourceManager.GetStream("Elevator_Ding", resourceCulture);
             }
         }
         
@@ -217,6 +235,15 @@ namespace MovingImage.Properties {
             get {
                 object obj = ResourceManager.GetObject("Lift", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Open_Sound {
+            get {
+                return ResourceManager.GetStream("Open_Sound", resourceCulture);
             }
         }
         

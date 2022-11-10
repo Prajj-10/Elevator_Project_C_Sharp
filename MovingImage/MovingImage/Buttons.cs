@@ -25,9 +25,9 @@ namespace MovingImage
 
         // Default Sounds for Opening, Closing and Ding sounds
 
-        System.Media.SoundPlayer ding = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Elevator_Ding.wav");
-        System.Media.SoundPlayer open = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Open_Sound.wav");
-        System.Media.SoundPlayer close = new System.Media.SoundPlayer(@"C:\Users\prajj\source\repo 2\Close_Sound.wav");
+        System.Media.SoundPlayer ding = new System.Media.SoundPlayer(Properties.Resources.Elevator_Ding);  
+        System.Media.SoundPlayer open = new System.Media.SoundPlayer(Properties.Resources.Open_Sound);     
+        System.Media.SoundPlayer close = new System.Media.SoundPlayer(Properties.Resources.Close_Sound);   
 
         public void ButtonUp(PictureBox Lift_Interior, PictureBox Ground_Floor_Door, PictureBox DisplayBox, Button buttonUp,Button Requesting_Down, Timer Timer_Close_Ground_Floor, Timer TimerUp, DataGridView dgvLogData, object sender, EventArgs e)
         {

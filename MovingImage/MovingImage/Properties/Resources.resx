@@ -175,4 +175,13 @@
   <data name="Titanium Textures" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Titanium Textures.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Close_Sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close_Sound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Elevator_Ding" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Elevator_Ding.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Open_Sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open_Sound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
