@@ -4,7 +4,7 @@ This project simulates an elevator with its buttons and controls. It also keeps 
 To store the log details, PostgreSQL is used in the local database.
 
 <p align="center">
-  <img src="./Application Screenshots/GUI4.png" alt="Elevator GUI" width="1200" height="600">
+  <img src="./Application Screenshots/GUI4.png" alt="Elevator GUI" width="1200" height="500">
 </p>
 
 The program focuses on creating a robust database system leveraging the use of Visual Studio.
@@ -33,12 +33,12 @@ The project is only a simulator for an elevator. For more information on this pr
 ## GUI Screenshots:
 
 <p align="center">
-  <img src="./Application Screenshots/GUI1.png" alt="Elevator GUI" width="1200" height="600">
-  <img src="./Application Screenshots/GUI2.png" alt="Elevator GUI" width="1200" height="600">
-  <img src="./Application Screenshots/GUI3.png" alt="Elevator GUI" width="1200" height="600">
-  <img src="./Application Screenshots/GUI4.png" alt="Elevator GUI" width="1200" height="600">
-  <img src="./Application Screenshots/GUI5.png" alt="Elevator GUI" width="1200" height="600">
-  <img src="./Application Screenshots/GUI6.png" alt="Elevator GUI" width="1200" height="600">
+  <img src="./Application Screenshots/GUI1.png" alt="Elevator GUI" width="1200" height="500">
+  <img src="./Application Screenshots/GUI2.png" alt="Elevator GUI" width="1200" height="500">
+  <img src="./Application Screenshots/GUI3.png" alt="Elevator GUI" width="1200" height="500">
+  <img src="./Application Screenshots/GUI4.png" alt="Elevator GUI" width="1200" height="500">
+  <img src="./Application Screenshots/GUI5.png" alt="Elevator GUI" width="1200" height="500">
+  <img src="./Application Screenshots/GUI6.png" alt="Elevator GUI" width="1200" height="500">
 </p> 
 
 ## Application Demonstration:  
