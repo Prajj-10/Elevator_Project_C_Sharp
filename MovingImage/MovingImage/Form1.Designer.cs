@@ -262,7 +262,7 @@
             this.dgvLogData.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvLogData.RowTemplate.Height = 33;
             this.dgvLogData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLogData.Size = new System.Drawing.Size(1116, 700);
+            this.dgvLogData.Size = new System.Drawing.Size(1230, 700);
             this.dgvLogData.TabIndex = 11;
             // 
             // buttonShowLogs
@@ -381,7 +381,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = global::MovingImage.Properties.Resources.Titanium_Textures;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(2529, 1552);
+            this.ClientSize = new System.Drawing.Size(2559, 1552);
             this.Controls.Add(this.Requesting_Down);
             this.Controls.Add(this.Requesting_Up);
             this.Controls.Add(this.DisplayBox_Ground_Floor);

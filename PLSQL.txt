@@ -1,0 +1,49 @@
+CREATE TABLE log_details (
+    log_id SERIAL PRIMARY KEY,
+    button_pressed text,
+    event_date text,
+    event_time text,
+    button_details text  
+);
+
+select * from log_details;
+
+CREATE OR REPLACE function log_insert(_button text, _date text, _time text, _button_details text)
+returns int as 
+$$
+begin 
+    insert into log_details(button_pressed, event_date, event_time, button_details)
+    values(_button, _date, _time, _button_details);
+    if found then   -- to check if insert is sucessful or not.
+        return 1;
+    else return 0;
+    end if;
+end
+$$
+language plpgsql
+
+
+-- test function insert
+select * from log_insert('Up', '2022/11/2', '1:06 PM', 'going first floor');
+select * from log_insert('Down', '2022/11/2', '1:07 PM', 'going down');
+
+DROP FUNCTION log_select();
+
+create or replace function log_select()
+returns table
+(
+    "Log ID" integer,
+    "Button Pressed" text,
+    "Event Date" text,
+    "Event Time" text,
+    "Button Details" text
+) as
+$$
+begin 
+    return query
+    select log_id, button_pressed, event_date, event_time, button_details from log_details;
+end
+$$
+language plpgsql
+
+select * from log_select();
